@@ -58,6 +58,24 @@ function doLogin()
 
 }
 
+function doRegister() {
+	userId = 0;
+	firstName = "";
+	lastName = "";
+
+	let firstName = document.getElementById("firstName").value;
+	let lastName = document.getElementById("lastName").value;
+	let login = document.getElementById("loginName").value;
+	let password = document.getElementById("loginPassword").value;
+	let passwordConfirm = document.getElementById("loginPasswordConfirm").value;
+
+	if (password !== passwordConfirm) {
+		document.getElementById("registerResult").innerHTML = "Passwords do not match";
+	}
+
+
+}
+
 function saveCookie()
 {
 	let minutes = 20;
