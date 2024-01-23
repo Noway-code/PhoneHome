@@ -21,7 +21,7 @@ body {
     text-align: center;
 }
 
-#loginDiv
+.userForm
 {
     font-size: 30px;
     width: 70%;
@@ -100,7 +100,7 @@ input[type="text"],input[type="password"]{
     color: #95060a;
 }
 
-#loginResult{
+.result{
     display: inline-block;
     font-size: 0.8em;
     width: 90%;
