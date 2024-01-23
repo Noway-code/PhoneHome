@@ -26,8 +26,10 @@ body {
     font-size: 30px;
     width: 70%;
     margin-left: 15%;
-    padding: 25px;
+    padding: 25px 25px 50px;
     background-color: #b2b2b2;
+    justify-content: center;
+    align-items: center;
 }
 
 #loggedInDiv
@@ -153,4 +155,9 @@ select{
     margin-top: 20%;
     margin-right: auto;
     font-family: 'Ubuntu', sans-serif;
+}
+
+.showForm {
+    width: 100%;
+    /* rest of your styles */
 }

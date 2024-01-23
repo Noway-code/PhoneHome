@@ -28,20 +28,20 @@
 
 <div class="userForm" id="loginDiv">
     <span id="inner-title">PLEASE LOG IN</span>
+    <span class="result"></span>
     <input type="text" id="loginName" placeholder="Username" /><br />
     <input type="password" id="loginPassword" placeholder="Password"/><br />
     <button type="button" id="loginButton" class="buttons" onclick="doLogin();">Do It</button>
-    <span class="result"></span>
-    <button type="button" id="showRegisterButton" class="btn btn-link" onclick="showRegister();">Click here to register</button>
+    <button type="button" class="btn btn-link showForm" onclick="showRegister();">Click here to register</button>
 </div>
 <div class="userForm" id="registerDiv" style="display: none;">
     <span id="register-title">PLEASE REGISTER</span>
+    <span class="result"></span>
     <input type="text" id="registerName" placeholder="Username" /><br />
     <input type="password" id="registerPassword" placeholder="Password"/><br />
     <input type="password" id="registerConfirmPassword" placeholder="Confirm Password"/><br />
     <button type="button" id="registerButton" class="buttons" onclick="doRegister();">Register</button>
-    <span class="result"></span>
-    <button type="button" class="btn btn-link" id="showLoginButton" onclick="showLogin();" >Click here to login</button>
+    <button type="button" class="btn btn-link showForm" onclick="showLogin();" >Click here to login</button>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
