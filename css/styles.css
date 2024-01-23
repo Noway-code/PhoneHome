@@ -91,7 +91,7 @@ input[type="text"],input[type="password"]{
     font-family: 'Ubuntu', sans-serif;
 }
 
-#inner-title{
+#loginResult{
     display: inline-block;
     font-size: 0.8em;
     width: 90%;
@@ -102,7 +102,8 @@ input[type="text"],input[type="password"]{
     color: #95060a;
 }
 
-.result{
+
+.inner-title{
     display: inline-block;
     font-size: 0.8em;
     width: 90%;
