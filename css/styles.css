@@ -50,11 +50,12 @@ body {
     background-color: #b2b2b2;
 }
 
-.buttons {
+.buttons
+{
     font-size: 30px;
     border-radius: 25px;
     width: 50%;
-    align-self: center;
+    margin-left: 25%;
     font-family: 'Ubuntu', sans-serif;
 }
 
@@ -62,7 +63,7 @@ body {
     font-size: 30px;
     border-radius: 25px;
     width: 50%;
-    align-self: 25%;
+    align-self: center;
     font-family: 'Ubuntu', sans-serif;
 }
 
