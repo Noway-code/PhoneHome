@@ -58,6 +58,14 @@ body {
     font-family: 'Ubuntu', sans-serif;
 }
 
+.buttonsUserForm {
+    font-size: 30px;
+    border-radius: 25px;
+    width: 50%;
+    align-self: 25%;
+    font-family: 'Ubuntu', sans-serif;
+}
+
 .buttons:hover{
     background-color: #00d5124f;
     color: #FFFFFF;
