@@ -1,3 +1,4 @@
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -15,11 +16,14 @@
     </style>
 </head>
 <body>
-
-<h1 id="title">COP 4331 LAMP Stack Demo</h1>
-
+<div id="logoDiv">
+    <img src="images/logo.png" alt="Logo" id="logo">
+</div>
 <div id="readyDiv">
-    <button type="button" id="readyButton" class="buttons" onclick="showLogin();">Ready</button>
+    <button type="button" class="btn btn-success btn-lg" onclick="showLogin();">
+        Ready to Login?
+    </button>
+
 </div>
 
 <div id="loginDiv">
@@ -37,6 +41,8 @@
 		document.getElementById('readyDiv').style.display = 'none';
 		document.getElementById('loginDiv').style.display = 'block';
 	}
+
+
 </script>
 </body>
 </html>
