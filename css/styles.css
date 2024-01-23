@@ -175,3 +175,9 @@ select{
     align-self: center;
     /* rest of your styles */
 }
+
+.nameInput {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+}
