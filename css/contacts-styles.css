@@ -1,8 +1,14 @@
 body {
-	background-image: url('/images/AlienBGstars.png');
+	background-color: black;
+	background-image: url('../images/AlienBGstars.png');
     background-size: cover;
 }
 
-div {
-	dispay: inline;
+#title {
+	dispay: block;
+	font-size: 100px;
+	color: white;
+    font-family: 'Ubuntu', sans-serif;
+	text-align: center;
+
 }
