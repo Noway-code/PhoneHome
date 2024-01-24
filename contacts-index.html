@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>COP 4331 LAMP Stack Demo</title>
+        <script type="text/javascript" src="js/md5.js"></script>
+        <script type="text/javascript" src="js/code.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link href="css/styles.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+        <style>
+        #loginDiv {
+            display: none;
+        }
+
+        .showForm:hover {
+            background-color: rgba(245, 255, 0, 0.75);
+
+        }
+
+    </style>
+    </head>
+
+
+    <body>
+        <div id="logoDiv">
+            <img src="images/logo.png" alt="Logo" id="logo">
+        </div>
+        <div id="readyDiv">
+            <button type="button" class="btn btn-success btn-lg" onclick="showLogin();">
+                Ready to Login?
+            </button>
+
+        </div>
+
+        <div class="userForm" id="loginDiv">
+            <span class="inner-title">PLEASE LOG IN</span>
+            <span class="results" id="loginResult"></span>
+            <input type="text" id="loginName" placeholder="Username" /><br />
+            <input type="password" id="loginPassword" placeholder="Password"/><br />
+            <div class="buttonContainer">
+                <button type="button" id="loginButton" class="buttonsUserForm" onclick="doLogin();">Do It</button>
+                <button type="button" id="showRegisterButton" class="btn btn-link showForm" onclick="showRegister();">Click here to register</button>
+            </div>
+        </div>
+        <div class="userForm" id="registerDiv" style="display: none;">
+            <span class="inner-title">PLEASE REGISTER</span>
+            <span class="results" id="registerResult"></span>
+            <div class="nameInput">
+                <input type="text" id="firstName" placeholder="First Name" />
+                <input type="text" id="lastName" placeholder="Last Name" />
+            </div>
+            <input type="text" id="registerName" placeholder="Username" /><br />
+            <input type="password" id="registerPassword" placeholder="Password"/><br />
+            <input type="password" id="registerConfirmPassword" placeholder="Confirm Password"/><br />
+            <div class="buttonContainer">
+                <button type="button" id="registerButton" class="buttonsUserForm" onclick="doRegister();">Register</button>
+                <button type="button" class="btn btn-link showForm" onclick="showLogin();" >Click here to login</button>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <script>
+        	function showLogin() {
+        		document.getElementById('readyDiv').style.display = 'none';
+        		document.getElementById('registerDiv').style.display = 'none';
+        		document.getElementById('loginDiv').style.display = 'block';
+        	}
+
+            function showRegister() {
+                document.getElementById('readyDiv').style.display = 'none';
+        	    document.getElementById('registerDiv').style.display = 'block';
+        	    document.getElementById('loginDiv').style.display = 'none';
+            }
+
+        </script>
+    </body>
+</html>
