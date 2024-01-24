@@ -9,7 +9,7 @@ function doLogin()
 {
 	userId = 0;
 	firstName = "YO!";
-	lastName = "";
+	lastName = "yo mmaa";
 
 	let login = document.getElementById("loginName").value;
 	let password = document.getElementById("loginPassword").value;
