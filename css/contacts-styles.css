@@ -14,5 +14,6 @@ body {
 }
 
 #logOutContainer {
-	float: right;
+	position: absolute;
+	right: 0;
 }
