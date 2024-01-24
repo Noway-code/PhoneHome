@@ -20,5 +20,27 @@ body {
 
 
 #contactsContainer {
-	
+	width: 80%;
+	background-color: lightslategray;
+	margin: auto;
+}
+
+table {
+	margin: auto;
+	width: 80%;
+	border-collapse: collapse;
+	background-color: lightgray;
+	opacity: 0.5;
+}
+
+th, td {
+	color: black;
+	padding: 10px;
+	text-align: left;
+}
+
+th {
+	font-size: 30px;
+	font-family: 'Ubuntu', sans-serif;
+
 }
