@@ -8,8 +8,8 @@ let lastName = "";
 function doLogin()
 {
 	userId = 0;
-	firstName = "YO!";
-	lastName = "yo mmaa";
+	firstName = "";
+	lastName = "";
 
 	let login = document.getElementById("loginName").value;
 	let password = document.getElementById("loginPassword").value;
