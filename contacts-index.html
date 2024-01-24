@@ -33,6 +33,7 @@
                     <th>Secondary Identifier</th>
                     <th>Number Code</th>
                     <th>Contact Address</th>
+                    <th>Protocols</th>
                 </tr>
                 <tr>
                     <td>
@@ -46,6 +47,17 @@
                     </td>
                     <td>
                         <input type="email" id="email" placeholder="Email" required>
+                    </td>
+                    <td>
+                        <button id="editButton" type="button" class="btn btn-dark" onclick="editContact();">
+                            Modify 
+                        </button>
+                        <button id="deleteButton" type="button" class="btn btn-dark" onclick="deleteContact();">
+                            Destroy 
+                        </button>
+                        <button id="addContactButton" type="button" class="btn btn-dark" onclick="addContact();">
+                            Append Entry 
+                        </button>
                     </td>
                 </tr>
             </table>
@@ -61,7 +73,15 @@
             function logOut() {
                 alert("logged out");
             }
-
+            function editContact() {
+                alert("editing contact");
+            }
+            function deleteContact() {
+                alert("deleted contact");
+            }
+            function addContact() {
+                alert("added contact");
+            }
         </script>
 
     </body>

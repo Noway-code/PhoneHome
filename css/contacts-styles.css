@@ -19,7 +19,7 @@ body {
 
 
 #contactsContainer {
-	width: 80%;
+	width: 90%;
 	background-color: rgba(178, 178, 178, 0.5);
 	margin: auto;
 	height: 80vh;
@@ -27,14 +27,14 @@ body {
 
 table {
 	margin: auto;
-	width: 80%;
+	width: 85%;
 	border-collapse: collapse;
 	background-color: rgb(178, 178, 178);	
 }
 
 th, td {
 	padding: 10px;
-	text-align: left;
+	text-align: center;
 }
 
 th {
@@ -49,4 +49,9 @@ td {
 
 
 #headerRow {
+}
+
+
+#editButton, #deleteButton {
+	display: none;
 }
