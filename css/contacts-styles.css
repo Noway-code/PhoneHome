@@ -12,3 +12,7 @@ body {
 	text-align: center;
 
 }
+
+#logOutContainer {
+	float: right;
+}
