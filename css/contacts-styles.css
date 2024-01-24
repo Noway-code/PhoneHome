@@ -10,7 +10,6 @@ body {
 	color: white;
     font-family: 'Ubuntu', sans-serif;
 	text-align: center;
-
 }
 
 #logOutContainer {
@@ -21,20 +20,19 @@ body {
 
 #contactsContainer {
 	width: 80%;
-	background-color: lightslategray;
+	background-color: rgba(178, 178, 178, 0.5);
 	margin: auto;
+	height: 80vh;
 }
 
 table {
 	margin: auto;
 	width: 80%;
 	border-collapse: collapse;
-	background-color: lightgray;
-	opacity: 0.5;
+	background-color: rgb(178, 178, 178);	
 }
 
 th, td {
-	color: black;
 	padding: 10px;
 	text-align: left;
 }
@@ -42,5 +40,13 @@ th, td {
 th {
 	font-size: 30px;
 	font-family: 'Ubuntu', sans-serif;
+	color: white;
+}
 
+td {
+	color: black;
+}
+
+
+#headerRow {
 }
