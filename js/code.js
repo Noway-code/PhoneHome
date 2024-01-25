@@ -46,7 +46,8 @@ function doLogin()
 
 				saveCookie();
 
-				window.location.href = "color.html";
+				window.location.href = "contact.html";
+        //window.location.href = "color.html";
 			}
 		};
 		xhr.send(jsonPayload);
@@ -108,6 +109,38 @@ function doLogout()
 	window.location.href = "index.html";
 }
 
+// This will be test, just changing the endpoint for now
+function addContact()
+{
+	let newContact = document.getElementById("contactText").value;
+	document.getElementById("contactAddResult").innerHTML = "";
+
+  //let tmp = {color:newContact,userId,userId};
+  let tmp = {firstName:newContact[0], lastName:newContact[1], phone:newContact[2], email:newContact[3], userId:userId}
+	let jsonPayload = JSON.stringify( tmp );
+
+	let url = urlBase + '/addContact.' + extension;
+
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.onreadystatechange = function()
+		{
+			if (this.readyState == 4 && this.status == 200)
+			{
+				document.getElementById("contactAddResult").innerHTML = "Contact has been added";
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		document.getElementById("contactAddResult").innerHTML = err.message;
+	}
+
+}
 function addColor()
 {
 	let newColor = document.getElementById("colorText").value;
