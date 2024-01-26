@@ -6,7 +6,7 @@ body {
 
 #title {
 	dispay: block;
-	font-size: 100px;
+	font-size: 90px;
 	color: white;
     font-family: 'Ubuntu', sans-serif;
 	text-align: center;
@@ -17,11 +17,15 @@ body {
 	right: 0;
 }
 
+#searchBarContainer {
+	padding-bottom: 10px;
+}
+
 #searchBar {
 	display: block;
 	text-align: center;
 	margin: auto;
-	width: 30%;
+	width: 200px;
 }
 
 
