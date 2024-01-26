@@ -86,6 +86,14 @@
             function addContact() {
                 alert("added contact");
             }
+        
+            let contactRow = '<tr><td><input type="text" class="inputInfo" id="firstName" placeholder="Firstname" required></td><td><input type="text" class="inputInfo" id="lastName" placeholder="Lastname" required></td><td><input type="text" class="inputInfo" id="number" placeholder="Phonenumber" required></td><td><input type="email" class="inputInfo" id="email" placeholder="Email" required></td><td><button id="editButton" type="button" class="btnbtn-dark" onclick="editContact();">Modify</button><button id="deleteButton" type="button" class="btnbtn-dark" onclick="deleteContact();">Destroy</button><button id="addContactButton" type="button" class="btnbtn-dark" onclick="addContact();">AppendEntry</button></td></tr>';
+        
+            $(document).ready(function () {
+                $("table").append(contactRow);
+            });
+
+
         </script>
 
     </body>
