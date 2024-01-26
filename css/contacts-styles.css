@@ -36,22 +36,29 @@ body {
 	height: 80vh;
 }
 
+.inputInfo {
+/*	text-align: center;*/
+}
+
 table {
 	margin: auto;
 	width: 85%;
 	border-collapse: collapse;
+	border: solid;
 	background-color: rgb(178, 178, 178);	
 }
 
 th, td {
+	border: solid;
 	padding: 10px;
 	text-align: center;
 }
 
 th {
-	font-size: 30px;
+	font-size: 25px;
 	font-family: 'Ubuntu', sans-serif;
 	color: white;
+	text-align: center;
 }
 
 td {
