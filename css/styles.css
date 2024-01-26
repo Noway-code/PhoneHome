@@ -21,13 +21,15 @@ body {
     text-align: center;
 }
 
-#loginDiv
+.userForm
 {
     font-size: 30px;
     width: 70%;
     margin-left: 15%;
-    padding: 25px;
+    padding: 25px 25px 50px;
     background-color: #b2b2b2;
+    justify-content: center;
+    align-items: center;
 }
 
 #loggedInDiv
@@ -57,7 +59,21 @@ body {
     font-family: 'Ubuntu', sans-serif;
 }
 
+.buttonsUserForm {
+    font-size: 30px;
+    border-radius: 25px;
+    width: 50%;
+    align-self: center;
+    font-family: 'Ubuntu', sans-serif;
+}
+
 .buttons:hover{
+    background-color: #00d5124f;
+    color: #FFFFFF;
+    opacity: 50%;
+}
+
+.buttonsUserForm:hover{
     background-color: #00d5124f;
     color: #FFFFFF;
     opacity: 50%;
@@ -89,7 +105,7 @@ input[type="text"],input[type="password"]{
     font-family: 'Ubuntu', sans-serif;
 }
 
-#inner-title{
+#loginResult{
     display: inline-block;
     font-size: 0.8em;
     width: 90%;
@@ -100,7 +116,19 @@ input[type="text"],input[type="password"]{
     color: #95060a;
 }
 
-#loginResult{
+#registerResult{
+    display: inline-block;
+    font-size: 0.8em;
+    width: 90%;
+    text-align: center;
+    margin-left: 5%;
+    margin-bottom: 2%;
+    font-family: 'Ubuntu', sans-serif;
+    color: #95060a;
+}
+
+
+.inner-title{
     display: inline-block;
     font-size: 0.8em;
     width: 90%;
@@ -134,6 +162,11 @@ select{
 #colorSearchResult{
     display: none;
 }
+.buttonContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 #colorAddResult{
     display: inline-block;
@@ -153,4 +186,15 @@ select{
     margin-top: 20%;
     margin-right: auto;
     font-family: 'Ubuntu', sans-serif;
+}
+
+.showForm {
+    align-self: center;
+    /* rest of your styles */
+}
+
+.nameInput {
+    width: 90%;
+    display: flex;
+    justify-content: center;
 }
