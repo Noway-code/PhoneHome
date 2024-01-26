@@ -122,20 +122,26 @@
 
 
                 // Function call to addContact with proper values
-                alert("Contact made with " + firstName + " " + lastName + " " + phoneNumber + " " + email);
+                //alert("Contact made with " + firstName + " " + lastName + " " + phoneNumber + " " + email);
 
-                // Make current row unmodifiable and change protocol button to "Edit" and "Delete"
+                // Make current row unmodifiable
+                $("#firstName" + rowID).prop("readonly", true);
+                $("#lastName" + rowID).prop("readonly", true);
+                $("#number" + rowID).prop("readonly", true);
+                $("#email" + rowID).prop("readonly", true);
+
+                // change "Add contact" button to "Edit" and "Delete"
                 $("#addContactButton" + rowID).hide();
                 $("#editButton" + rowID).show();
                 $("#deleteButton" + rowID).show();
 
                 // Append new empty contacts row
                 createEmptyContactRow();
-                alert("added contact");
+                //alert("added contact");
             }
             function createEmptyContactRow() {
                 $("table").append(createEmptyContactRowHelper());  
-                alert(rowID);              
+                //alert(rowID);              
                 $("#addContactButton" + rowID).show();
                 $("#editButton" + rowID).hide();
                 $("#deleteButton" + rowID).hide();

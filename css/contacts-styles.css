@@ -44,12 +44,12 @@ table {
 	margin: auto;
 	width: 85%;
 	border-collapse: collapse;
-	border: solid;
+/*	border: solid;*/
 	background-color: rgb(178, 178, 178);	
 }
 
 th, td {
-	border: solid;
+/*	border: solid;*/
 	padding: 10px;
 	text-align: center;
 }
