@@ -1,0 +1,57 @@
+body {
+	background-color: black;
+	background-image: url('../images/AlienBGstars.png');
+    background-size: cover;
+}
+
+#title {
+	dispay: block;
+	font-size: 100px;
+	color: white;
+    font-family: 'Ubuntu', sans-serif;
+	text-align: center;
+}
+
+#logOutContainer {
+	position: absolute;
+	right: 0;
+}
+
+
+#contactsContainer {
+	width: 90%;
+	background-color: rgba(178, 178, 178, 0.5);
+	margin: auto;
+	height: 80vh;
+}
+
+table {
+	margin: auto;
+	width: 85%;
+	border-collapse: collapse;
+	background-color: rgb(178, 178, 178);	
+}
+
+th, td {
+	padding: 10px;
+	text-align: center;
+}
+
+th {
+	font-size: 30px;
+	font-family: 'Ubuntu', sans-serif;
+	color: white;
+}
+
+td {
+	color: black;
+}
+
+
+#headerRow {
+}
+
+
+#editButton, #deleteButton {
+	display: none;
+}
