@@ -78,20 +78,65 @@
                 alert("logged out");
             }
             function editContact() {
+                // Find table row to be modified
+
+
+                // Change fields to be input fields
+
+
+                // Change "Edit" button to "Done"
+
+
+                // Change "Delete" button to "Cancel"
+
+
                 alert("editing contact");
             }
+            function doneEditingHandler() {
+                // Grab and store each field in a variable from current row
+
+
+                // Function call to editContact with proper values
+
+
+                // Make current row unmodifiable and change protocol button to "Edit" and "Delete"
+
+            }
             function deleteContact() {
+                // Find table row to be deleted
+
+
+                // Function call to deleteContact
+
+
+                // Remove row from table
+
                 alert("deleted contact");
             }
             function addContactHandler() {
-                $("table").append(contactRow);
+                // Grab and store each field in a variable from current row
+
+
+                // Function call to addContact with proper values
+
+
+                // Make current row unmodifiable and change protocol button to "Edit" and "Delete"
+
+
+                // Append new empty contacts row
+                $("table").append(createContactRowWithID());
                 alert("added contact");
             }
         
-            let contactRow = '<tr><td><input type="text" class="inputInfo" id="firstName" placeholder="First name" required></td><td><input type="text" class="inputInfo" id="lastName" placeholder="Last name" required></td><td><input type="text" class="inputInfo" id="number" placeholder="Phone number" required></td><td><input type="email" class="inputInfo" id="email" placeholder="Email" required></td><td><button id="editButton" type="button" class="btn btn-dark" onclick="editContact();">Modify</button><button id="deleteButton" type="button" class="btn btn-dark" onclick="deleteContact();">Destroy</button><button id="addContactButton" type="button" class="btn btn-dark" onclick="addContactHandler();">Append Entry</button></td></tr>';
+            var rowID = -1;
+            function createContactRowWithID() {     
+                rowID++;
+                return '<tr id="' + rowID + '"><td><input type="text" class="inputInfo" id="firstName" placeholder="First name" required></td><td><input type="text" class="inputInfo" id="lastName" placeholder="Last name" required></td><td><input type="text" class="inputInfo" id="number" placeholder="Phone number" required></td><td><input type="email" class="inputInfo" id="email" placeholder="Email" required></td><td><button id="editButton" type="button" class="btn btn-dark" onclick="editContact();">Modify</button><button id="deleteButton" type="button" class="btn btn-dark" onclick="deleteContact();">Destroy</button><button id="addContactButton" type="button" class="btn btn-dark" onclick="addContactHandler();">Append Entry</button></td></tr>';
+            }
+            // let contactRow = '<tr><td><input type="text" class="inputInfo" id="firstName" placeholder="First name" required></td><td><input type="text" class="inputInfo" id="lastName" placeholder="Last name" required></td><td><input type="text" class="inputInfo" id="number" placeholder="Phone number" required></td><td><input type="email" class="inputInfo" id="email" placeholder="Email" required></td><td><button id="editButton" type="button" class="btn btn-dark" onclick="editContact();">Modify</button><button id="deleteButton" type="button" class="btn btn-dark" onclick="deleteContact();">Destroy</button><button id="addContactButton" type="button" class="btn btn-dark" onclick="addContactHandler();">Append Entry</button></td></tr>';
         
             $(document).ready(function () {
-                $("table").append(contactRow);
+                $("table").append(createContactRowWithID());                
             });
 
 
