@@ -116,10 +116,11 @@ function addContact()
 	document.getElementById("contactAddResult").innerHTML = "";
 
   //let tmp = {color:newContact,userId,userId};
-  let tmp = {firstName:newContact[0], lastName:newContact[1], phone:newContact[2], email:newContact[3], userId:userId}
+  let newContactSplit = newContact.split(" ");
+  let tmp = {firstName:newContactSplit[0], lastName:newContactSplit[1], phone:newContactSplit[2], email:newContactSplit[3], userId:userId}
 	let jsonPayload = JSON.stringify( tmp );
 
-	let url = urlBase + '/addContact.' + extension;
+	let url = urlBase + '/AddContact.' + extension;
 
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
