@@ -94,23 +94,20 @@ function doRegister() {
 					return;
 				}
 
+				firstName = tmp.firstName;
+				lastName = tmp.lastName;
 				login = jsonObject.username;
 				password = jsonObject.password;
-
-
 				saveCookie();
 
 				window.location.href = "contact.html";
 			}
 		};
 		xhr.send(jsonPayload);
-
-
 	}
 	catch(err) {
 		document.getElementById("registerResult").innerHTML = err.message;
 	}
-
 }
 
 function saveCookie()
