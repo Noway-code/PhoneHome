@@ -61,9 +61,9 @@ function doLogin()
 
 function doRegister() {
 	userId = 0;
+	firstName = document.getElementById("firstName").value;
+	lastName = document.getElementById("lastName").value;
 
-    let firstNameInput = document.getElementById("firstName").value;
-	let lastNameInput = document.getElementById("lastName").value;
 	let login = document.getElementById("registerName").value;
 	let password = document.getElementById("registerPassword").value;
 	let passwordConfirm = document.getElementById("registerConfirmPassword").value;
@@ -73,6 +73,47 @@ function doRegister() {
 	if (password !== passwordConfirm) {
 		document.getElementById("registerResult").innerHTML = "Passwords do not match";
 	}
+
+	let tmp = {firstName:firstName,lastName:lastName,login:login,password:password};
+
+	let jsonPayload = JSON.stringify( tmp );
+
+	let url = urlBase + '/Registration.' + extension;
+	let xhr = new XMLHttpRequest();
+
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try {
+		xhr.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				let jsonObject = JSON.parse( xhr.responseText );
+				userId = jsonObject.id;
+
+				if( userId < 1 ) {
+					document.getElementById("registerResult").innerHTML = "Registration failed";
+					return;
+				}
+
+				firstName = jsonObject.firstName;
+				lastName = jsonObject.lastName;
+				login = jsonObject.username;
+				password = jsonObject.password;
+
+
+				saveCookie();
+
+				window.location.href = "contact.html";
+				document.getElementById("registerResult").innerHTML = "Registration success";
+			}
+		};
+		xhr.send(jsonPayload);
+
+
+	}
+	catch(err) {
+		document.getElementById("registerResult").innerHTML = err.message;
+	}
+
 }
 
 function saveCookie()
