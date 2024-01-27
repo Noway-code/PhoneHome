@@ -70,6 +70,13 @@ td {
 }
 
 
-#editButton, #deleteButton {
+/*#editButton, #deleteButton {
 	display: none;
 }
+*/
+
+input {
+	border: 1px solid grey;
+	background: white;
+}
+
