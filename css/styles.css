@@ -190,11 +190,29 @@ select{
 
 .showForm {
     align-self: center;
-    /* rest of your styles */
 }
 
 .nameInput {
     width: 90%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
 }
+
+#firstName {
+    width: 48%;
+    margin-left: 11%;
+    font-family: 'Ubuntu', sans-serif;
+    border-radius: 25px;
+    text-align: center;
+}
+
+#lastName {
+    width: 48%;
+    font-family: 'Ubuntu', sans-serif;
+    border-radius: 25px;
+    text-align: center;
+}
+
+
+
