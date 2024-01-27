@@ -94,8 +94,6 @@ function doRegister() {
 					return;
 				}
 
-				firstName = jsonObject.firstName;
-				lastName = jsonObject.lastName;
 				login = jsonObject.username;
 				password = jsonObject.password;
 
@@ -103,7 +101,6 @@ function doRegister() {
 				saveCookie();
 
 				window.location.href = "contact.html";
-				document.getElementById("registerResult").innerHTML = "Registration success";
 			}
 		};
 		xhr.send(jsonPayload);
