@@ -126,15 +126,18 @@ function doLogout()
 }
 
 // This will be test, just changing the endpoint for now
-function addContact()
+function addContact(fName, lName, pNumber, email)
 {
-	let newContact = document.getElementById("contactText").value;
-	document.getElementById("contactAddResult").innerHTML = "";
+	// let newContact = document.getElementById("contactText").value;
+	// document.getElementById("contactAddResult").innerHTML = "";
 
   //let tmp = {color:newContact,userId,userId};
-  let newContactSplit = newContact.split(" ");
-  let tmp = {firstName:newContactSplit[0], lastName:newContactSplit[1], phone:newContactSplit[2], email:newContactSplit[3], userId:userId}
+  // let newContactSplit = newContact.split(" ");
+  // let tmp = {firstName:newContactSplit[0], lastName:newContactSplit[1], phone:newContactSplit[2], email:newContactSplit[3], userId:userId}
+	let tmp = {firstName:fName, lastName:lName, phone:pNumber, email:email, userId:userId}
+
 	let jsonPayload = JSON.stringify( tmp );
+
 
 	let url = urlBase + '/AddContact.' + extension;
 
@@ -147,14 +150,16 @@ function addContact()
 		{
 			if (this.readyState == 4 && this.status == 200)
 			{
-				document.getElementById("contactAddResult").innerHTML = "Contact has been added";
+				alert("contact added successfully");
+				// document.getElementById("contactAddResult").innerHTML = "Contact has been added";
 			}
 		};
 		xhr.send(jsonPayload);
 	}
 	catch(err)
 	{
-		document.getElementById("contactAddResult").innerHTML = err.message;
+		alert("error in adding contact");
+		// document.getElementById("contactAddResult").innerHTML = err.message;
 	}
 
 }
