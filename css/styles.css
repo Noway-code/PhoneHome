@@ -38,11 +38,17 @@ body {
     width: 70%;
     margin-left: 15%;
     padding: 25px 25px 50px;
-    background-color: #b2b2b2;
     justify-content: center;
     align-items: center;
     display: flex;
     flex-direction: column;
+    border-radius: 20px;
+    border-color: #00d5124f;
+    border-style: solid;
+    border-width: 3px;
+    color: #FFFFFF;
+    backdrop-filter: blur(2px);
+    background: rgba(0, 0, 0, 0.3) radial-gradient(circle, rgba(250, 249, 249, 0.3) 0%, rgb(1, 33, 1) 100%);
 }
 
 #loggedInDiv
@@ -116,6 +122,8 @@ input[type="text"],input[type="password"]{
     margin-left: 10%;
     margin-bottom: 2%;
     font-family: 'Ubuntu', sans-serif;
+    background-color: transparent;
+    color: white;
 }
 
 #loginResult{
@@ -143,13 +151,12 @@ input[type="text"],input[type="password"]{
 
 .inner-title{
     display: inline-block;
-    font-size: 0.8em;
+    font-size: 2em;
     width: 90%;
     text-align: center;
     margin-left: 5%;
-    margin-bottom: 2%;
-    font-family: 'Ubuntu', sans-serif;
-    color: #95060a;
+    font-family: 'QuirkyRobot','Ubuntu', sans-serif;
+    color: #ffffff;
 }
 
 #userName{
@@ -210,6 +217,7 @@ select{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: .5%;
 }
 
 #firstName {
@@ -257,6 +265,7 @@ select{
     animation-duration: 10s;
 }
 
+
 @keyframes fly {
     from { transform: translate(0, 0); }
     to { transform: translate(calc(200vw * var(--random-x)), calc(200vh * var(--random-y))); }
@@ -266,4 +275,16 @@ select{
     to { opacity: 1.0; }
 }
 
+
+@font-face {
+    font-family: Kahles;
+    src: url(/fonts/1Kahlesv2.ttf);
+
+}
+
+@font-face {
+    font-family: QuirkyRobot;
+    src: url(/fonts/QuirkyRobot.ttf);
+
+}
 
