@@ -13,8 +13,8 @@
 	} 
 	else
 	{
-		$stmt = $conn->prepare("UPDATE Contacts SET ? = ? WHERE ID = ?");
-		$stmt->bind_param("sss", $field, $edit, $ID);
+		$stmt = $conn->prepare("UPDATE Contacts SET $field = ? WHERE ID = ?");
+		$stmt->bind_param("ss", $edit, $ID);
 		$stmt->execute();
 		$stmt->close();
 		$conn->close();
