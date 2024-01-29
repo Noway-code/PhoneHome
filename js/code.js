@@ -130,7 +130,7 @@ function addContact(fName, lName, pNumber, email)
 {
 	// let newContact = document.getElementById("contactText").value;
 	// document.getElementById("contactAddResult").innerHTML = "";
-
+	alert("user id is: " + userId);
   //let tmp = {color:newContact,userId,userId};
   // let newContactSplit = newContact.split(" ");
   // let tmp = {firstName:newContactSplit[0], lastName:newContactSplit[1], phone:newContactSplit[2], email:newContactSplit[3], userId:userId}
