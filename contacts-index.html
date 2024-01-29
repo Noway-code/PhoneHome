@@ -18,7 +18,7 @@
     <body>
         <div id="logOutContainer">
                 <!-- Maybe could use "Terminate Connection" as message instead? -->
-            <button type="button" class="btn btn-dark btn-lg" onclick="logOut();">
+            <button type="button" class="btn btn-dark btn-lg" onclick="doLogout()();">
                 Protocol: Log Out 
             </button>
         </div>
@@ -74,9 +74,6 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
         <script>
-            function logOut() {
-                alert("logged out");
-            }
             function editContact() {
                 // Find table row to be modified using RegEx
                 let ID = event.srcElement.id;
