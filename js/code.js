@@ -119,7 +119,7 @@ function doRegister() {
 				password = jsonObject.password;
 				saveCookie();
 
-				window.location.href = "contact-index.html";
+				window.location.href = "contacts-index.html";
 			}
 		};
 		xhr.send(jsonPayload);
