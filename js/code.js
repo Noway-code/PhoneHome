@@ -72,30 +72,25 @@ function doRegister() {
 
 	if (password !== passwordConfirm) {
 		document.getElementById("registerResult").innerHTML = "Passwords do not match";
+		return;
 	}
 	if (firstName === "" || lastName === "" || login === "" || password === "") {
 		document.getElementById("registerResult").innerHTML = "Please fill out all fields";
 		return;
 	}
-	if(password.length < 8) {
-		document.getElementById("registerResult").innerHTML = "Password must be at least 8 characters long";
-		return;
-	}
-	if(!password.match(/[a-z]/g)) {
-		document.getElementById("registerResult").innerHTML = "Password must contain at least one lowercase letter";
-		return;
-	}
-	if(!password.match(/[A-Z]/g)) {
-		document.getElementById("registerResult").innerHTML = "Password must contain at least one uppercase letter";
-		return;
-	}
-	if(!password.match(/[0-9]/g)) {
-		document.getElementById("registerResult").innerHTML = "Password must contain at least one number";
-		return;
-	}
-	if(!password.match(/[^a-zA-Z\d]/g)) {
-		document.getElementById("registerResult").innerHTML = "Password must contain at least one special character";
-		return;
+
+	let rules = [
+		{ regex: /.{8,}/, message: "Password must be at least 8 characters long" },
+		{ regex: /[a-z]/, message: "Password must contain at least one lowercase letter" },
+		{ regex: /[A-Z]/, message: "Password must contain at least one uppercase letter" },
+		{ regex: /[0-9]/, message: "Password must contain at least one number" }
+	];
+
+	for (let rule of rules) {
+		if (!rule.regex.test(password)) {
+			document.getElementById("registerResult").innerHTML = rule.message;
+			return;
+		}
 	}
 
 	let tmp = {firstName:firstName,lastName:lastName,login:login,password:password};
@@ -124,7 +119,7 @@ function doRegister() {
 				password = jsonObject.password;
 				saveCookie();
 
-				window.location.href = "contact.html";
+				window.location.href = "contact-index.html";
 			}
 		};
 		xhr.send(jsonPayload);
