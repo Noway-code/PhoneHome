@@ -7,7 +7,7 @@ let lastName = "";
 
 function doLogin()
 {
-	userId = 0;
+	window.userId = 0;
 	firstName = "";
 	lastName = "";
 
@@ -33,12 +33,12 @@ function doLogin()
 			if (this.readyState == 4 && this.status == 200)
 			{
 				let jsonObject = JSON.parse( xhr.responseText );
-				userId = jsonObject.id;
-				console.log(userId);
-				alert(userId);
+				window.userId = jsonObject.id;
+				console.log(window.userId);
+				alert(window.userId);
 
 
-				if( userId < 1 )
+				if( window.userId < 1 )
 				{
 					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
 					return;
