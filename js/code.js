@@ -1,7 +1,7 @@
 const urlBase = 'http://cop4331-spring.xyz/LAMPAPI';
 const extension = 'php';
 
-let userId = 0;
+var userId = 0;
 let firstName = "";
 let lastName = "";
 
