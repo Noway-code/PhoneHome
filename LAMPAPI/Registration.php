@@ -19,7 +19,17 @@
 	{
 		$stmt = $conn->prepare("INSERT into Users (FirstName,LastName,Login,Password) VALUES(?,?,?,?)");
 		$stmt->bind_param("ssss", $firstName, $lastName, $login, $password);
-		$stmt->execute();
+
+		if (!$stmt->execute()) {
+			// Check for unique constraint violation
+			if ($conn->errno == 1062 || strpos($stmt->error, "Duplicate entry") !== false) {
+				echo "Username already exists.";
+			} else {
+				// Other registration errors
+				echo "Error during registration: " . $stmt->error;
+			}
+		}
+
 		$stmt->close();
 		$conn->close();
 		returnWithError("");
