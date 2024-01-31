@@ -34,7 +34,7 @@ function doLogin()
 			{
 				let jsonObject = JSON.parse( xhr.responseText );
 				userId = jsonObject.id;
-				console.log(userId);
+				console.log("first log:" + userId);
 				alert(userId);
 
 
@@ -52,6 +52,8 @@ function doLogin()
 				window.location.href = "contacts-index.html";
 
 				readCookie();
+				console.log("second log:" + userId);
+
         //window.location.href = "color.html";
 			}
 		};
