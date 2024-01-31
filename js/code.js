@@ -7,7 +7,7 @@ let lastName = "";
 
 function doLogin()
 {
-	window.userId = 0;
+	userId = 0;
 	firstName = "";
 	lastName = "";
 
@@ -33,12 +33,12 @@ function doLogin()
 			if (this.readyState == 4 && this.status == 200)
 			{
 				let jsonObject = JSON.parse( xhr.responseText );
-				window.userId = jsonObject.id;
-				console.log(window.userId);
-				alert(window.userId);
+				userId = jsonObject.id;
+				console.log(userId);
+				alert(userId);
 
 
-				if( window.userId < 1 )
+				if( userId < 1 )
 				{
 					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
 					return;
@@ -50,6 +50,8 @@ function doLogin()
 				saveCookie();
 
 				window.location.href = "contacts-index.html";
+
+				readCookie();
         //window.location.href = "color.html";
 			}
 		};
