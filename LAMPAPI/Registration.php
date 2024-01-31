@@ -21,19 +21,7 @@
 	{
 		$stmt = $conn->prepare("INSERT into Users (FirstName,LastName,Login,Password) VALUES(?,?,?,?)");
 		$stmt->bind_param("ssss", $firstName, $lastName, $login, $password);
-
-		try {
-		$stmt->execute()
-			// Registration successful
-			echo "Registration successful!";
-		}
-		catch (Exception $e) {
-			// Check for unique constraint violation
-			echo json_encode(['error' => 'MySQL Error: ' . $conn->error]);
-		} catch (Error $error) {
-			echo json_encode(['error' => 'MySQL Error: ' . $conn->error]);
-		}
-
+		$stmt->execute();
 		$stmt->close();
 		$conn->close();
 		returnWithError("");
