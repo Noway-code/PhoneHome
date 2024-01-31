@@ -2,6 +2,8 @@
     header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
     header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+	error_reporting(E_ALL); 
+	ini_set('display_errors', 1);
 
 	$inData = getRequestInfo();
 
@@ -21,7 +23,7 @@
 		$stmt->bind_param("ssss", $firstName, $lastName, $login, $password);
 
 		try {
-		if ($stmt->execute()) {
+		$stmt->execute()
 			// Registration successful
 			echo "Registration successful!";
 		}
