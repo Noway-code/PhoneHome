@@ -28,6 +28,8 @@
 		catch (Exception $e) {
 			// Check for unique constraint violation
 			echo json_encode(['error' => 'MySQL Error: ' . $conn->error]);
+		} catch (Error $error) {
+			echo json_encode(['error' => 'MySQL Error: ' . $conn->error]);
 		}
 
 		$stmt->close();
