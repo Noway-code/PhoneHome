@@ -25,12 +25,7 @@
 			echo "Registration successful!";
 		} else {
 			// Check for unique constraint violation
-			if ($conn->errno == 1062 || strpos($stmt->error, "Duplicate entry") !== false) {
-				echo "Username already exists. Please choose a different username.";
-			} else {
-				// Other registration errors
-				echo "Error during registration: " . $stmt->error;
-			}
+			echo json_encode(['error' => 'MySQL Error: ' . $conn->error]);
 		}
 
 		$stmt->close();
