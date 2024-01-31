@@ -25,6 +25,7 @@
 			if ($conn->errno == 1062 || strpos($stmt->error, "Duplicate entry") !== false) {
 				$retValue = '{"error":"'Duplicate'"}';
 				sendResultInfoAsJson( $retValue );
+			}
 		}
 
 		$stmt->close();
