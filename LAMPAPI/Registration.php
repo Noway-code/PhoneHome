@@ -23,11 +23,8 @@
 		if (!$stmt->execute()) {
 			// Check for unique constraint violation
 			if ($conn->errno == 1062 || strpos($stmt->error, "Duplicate entry") !== false) {
-				echo "Username already exists.";
-			} else {
-				// Other registration errors
-				echo "Error during registration: " . $stmt->error;
-			}
+				$retValue = '{"error":"'Duplicate'"}';
+				sendResultInfoAsJson( $retValue );
 		}
 
 		$stmt->close();
