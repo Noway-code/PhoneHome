@@ -20,11 +20,16 @@
 		$stmt = $conn->prepare("INSERT into Users (FirstName,LastName,Login,Password) VALUES(?,?,?,?)");
 		$stmt->bind_param("ssss", $firstName, $lastName, $login, $password);
 
-		if (!$stmt->execute()) {
+		if ($stmt->execute()) {
+			// Registration successful
+			echo "Registration successful!";
+		} else {
 			// Check for unique constraint violation
 			if ($conn->errno == 1062 || strpos($stmt->error, "Duplicate entry") !== false) {
-				$retValue = '{"error":"'Duplicate'"}';
-				sendResultInfoAsJson( $retValue );
+				echo "Username already exists. Please choose a different username.";
+			} else {
+				// Other registration errors
+				echo "Error during registration: " . $stmt->error;
 			}
 		}
 
