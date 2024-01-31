@@ -20,10 +20,12 @@
 		$stmt = $conn->prepare("INSERT into Users (FirstName,LastName,Login,Password) VALUES(?,?,?,?)");
 		$stmt->bind_param("ssss", $firstName, $lastName, $login, $password);
 
+		try {
 		if ($stmt->execute()) {
 			// Registration successful
 			echo "Registration successful!";
-		} else {
+		}
+		catch (Exception $e) {
 			// Check for unique constraint violation
 			echo json_encode(['error' => 'MySQL Error: ' . $conn->error]);
 		}
