@@ -9,7 +9,7 @@ let lastName = "";
 function doLogin()
 {
 	//userId = 0;
-	sessionStorage.setItem("userId", 0);
+	localStorage.setItem("userId", 0);
 	firstName = "";
 	lastName = "";
 
@@ -36,12 +36,12 @@ function doLogin()
 			{
 				let jsonObject = JSON.parse( xhr.responseText );
 				//userId = jsonObject.id;
-				sessionStorage.setItem("userId", jsonObject.id);
-				console.log("first log:" + sessionStorage.getItem("userId"));
+				localStorage.setItem("userId", jsonObject.id);
+				console.log("first log:" + localStorage.getItem("userId"));
 				//alert(userId);
 
 
-				if( sessionStorage.getItem("userId") < 1 )
+				if( localStorage.getItem("userId") < 1 )
 				{
 					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
 					return;
@@ -55,7 +55,7 @@ function doLogin()
 				window.location.href = "contacts-index.html";
 
 				//readCookie();
-				console.log("second log:" + sessionStorage.getItem("userId"));
+				console.log("second log:" + localStorage.getItem("userId"));
 
         //window.location.href = "color.html";
 
@@ -201,7 +201,7 @@ function addContact(fName, lName, pNumber, email)
   // let newContactSplit = newContact.split(" ");
   // let tmp = {firstName:newContactSplit[0], lastName:newContactSplit[1], phone:newContactSplit[2], email:newContactSplit[3], userId:userId}
 	//let tmp = {firstName:fName, lastName:lName, phone:pNumber, email:email, userId:userId};
-	let tmp = {firstName:fName, lastName:lName, phone:pNumber, email:email, userId:sessionStorage.getItem("userId")};
+	let tmp = {firstName:fName, lastName:lName, phone:pNumber, email:email, userId:parseInt(localStorage.getItem("userId"))};
 
 	//let newContact = document.getElementById("contactText").value;
 	//document.getElementById("contactAddResult").innerHTML = "";
@@ -223,7 +223,7 @@ function addContact(fName, lName, pNumber, email)
 		{
 			if (this.readyState == 4 && this.status == 200)
 			{
-				console.log("userid in addContact(): " + sessionStorage.getItem("userId"));
+				console.log("userid in addContact(): " + parseInt(localStorage.getItem("userId")));
 				//alert("contact added successfully");
 				// document.getElementById("contactAddResult").innerHTML = "Contact has been added";
 			}
