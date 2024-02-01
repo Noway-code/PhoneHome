@@ -200,7 +200,7 @@ function addContact(fName, lName, pNumber, email)
   //let tmp = {color:newContact,userId,userId};
   // let newContactSplit = newContact.split(" ");
   // let tmp = {firstName:newContactSplit[0], lastName:newContactSplit[1], phone:newContactSplit[2], email:newContactSplit[3], userId:userId}
-	let tmp = {firstName:fName, lastName:lName, phone:pNumber, email:email, userId:userId};
+	//let tmp = {firstName:fName, lastName:lName, phone:pNumber, email:email, userId:userId};
 	let tmp = {firstName:fName, lastName:lName, phone:pNumber, email:email, userId:sessionStorage.getItem("userId")};
 
 	//let newContact = document.getElementById("contactText").value;
