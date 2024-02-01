@@ -41,7 +41,7 @@ function doLogin()
 				//alert(userId);
 
 
-				if( userId < 1 )
+				if( sessionStorage.getItem("userId") < 1 )
 				{
 					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
 					return;
