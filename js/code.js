@@ -219,7 +219,8 @@ function addContact(fName, lName, pNumber, email)
 		{
 			if (this.readyState == 4 && this.status == 200)
 			{
-				alert("contact added successfully");
+				console.log("userid in addContact(): " + userId);
+				//alert("contact added successfully");
 				// document.getElementById("contactAddResult").innerHTML = "Contact has been added";
 			}
 		};
