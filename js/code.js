@@ -1,7 +1,7 @@
 const urlBase = 'http://cop4331-spring.xyz/LAMPAPI';
 const extension = 'php';
 
-let userId = 0;
+var userId = 0;
 let firstName = "";
 let lastName = "";
 
@@ -34,6 +34,9 @@ function doLogin()
 			{
 				let jsonObject = JSON.parse( xhr.responseText );
 				userId = jsonObject.id;
+				//console.log("first log:" + userId);
+				//alert(userId);
+
 
 				if( userId < 1 )
 				{
@@ -44,10 +47,15 @@ function doLogin()
 				firstName = jsonObject.firstName;
 				lastName = jsonObject.lastName;
 
-				saveCookie();
+				//saveCookie();
 
 				window.location.href = "contacts-index.html";
-				//window.location.href = "color.html";
+
+				//readCookie();
+				//console.log("second log:" + userId);
+
+        //window.location.href = "color.html";
+
 			}
 		};
 		xhr.send(jsonPayload);
@@ -139,7 +147,7 @@ function saveCookie()
 
 function readCookie()
 {
-	userId = -1;
+	var userId = -1;
 	let data = document.cookie;
 	let splits = data.split(",");
 	for(var i = 0; i < splits.length; i++)
@@ -168,6 +176,7 @@ function readCookie()
 	{
 		document.getElementById("userName").innerHTML = "Logged in as " + firstName + " " + lastName;
 	}
+	alert("cookie read, userid is: " + userId);
 }
 
 function doLogout()
@@ -180,15 +189,24 @@ function doLogout()
 }
 
 // This will be test, just changing the endpoint for now
-function addContact()
+function addContact(fName, lName, pNumber, email)
 {
-	let newContact = document.getElementById("contactText").value;
-	document.getElementById("contactAddResult").innerHTML = "";
+	// let newContact = document.getElementById("contactText").value;
+	// document.getElementById("contactAddResult").innerHTML = "";
+	//console.log("user id is: " + userId);
+  //let tmp = {color:newContact,userId,userId};
+  // let newContactSplit = newContact.split(" ");
+  // let tmp = {firstName:newContactSplit[0], lastName:newContactSplit[1], phone:newContactSplit[2], email:newContactSplit[3], userId:userId}
+	let tmp = {firstName:fName, lastName:lName, phone:pNumber, email:email, userId:userId}
+
+	//let newContact = document.getElementById("contactText").value;
+	//document.getElementById("contactAddResult").innerHTML = "";
 
 	//let tmp = {color:newContact,userId,userId};
-	let newContactSplit = newContact.split(" ");
-	let tmp = {firstName:newContactSplit[0], lastName:newContactSplit[1], phone:newContactSplit[2], email:newContactSplit[3], userId:userId}
+	//let newContactSplit = newContact.split(" ");
+	//let tmp = {firstName:newContactSplit[0], lastName:newContactSplit[1], phone:newContactSplit[2], email:newContactSplit[3], userId:userId}
 	let jsonPayload = JSON.stringify( tmp );
+
 
 	let url = urlBase + '/AddContact.' + extension;
 
@@ -201,14 +219,16 @@ function addContact()
 		{
 			if (this.readyState == 4 && this.status == 200)
 			{
-				document.getElementById("contactAddResult").innerHTML = "Contact has been added";
+				alert("contact added successfully");
+				// document.getElementById("contactAddResult").innerHTML = "Contact has been added";
 			}
 		};
 		xhr.send(jsonPayload);
 	}
 	catch(err)
 	{
-		document.getElementById("contactAddResult").innerHTML = err.message;
+		alert("error in adding contact");
+		// document.getElementById("contactAddResult").innerHTML = err.message;
 	}
 
 }

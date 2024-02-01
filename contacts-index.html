@@ -18,13 +18,17 @@
     <body>
         <div id="logOutContainer">
                 <!-- Maybe could use "Terminate Connection" as message instead? -->
-            <button type="button" class="btn btn-dark btn-lg" onclick="logOut();">
+            <button type="button" class="btn btn-dark btn-lg" onclick="doLogout()();">
                 Protocol: Log Out 
             </button>
         </div>
         
         <h1 id="title">Intergalactic Connections</h1>
         
+        <div id="searchBarContainer">
+            <input type="text" id="searchBar" placeholder="Search">
+        </div>
+
         <div id="contactsContainer">
 
             <table>
@@ -35,18 +39,18 @@
                     <th>Contact Address</th>
                     <th>Protocols</th>
                 </tr>
-                <tr>
+<!--                 <tr>
                     <td>
-                        <input type="text" id="firstName" placeholder="First name" required>
+                        <input type="text" class="inputInfo" id="firstName" placeholder="First name" required>
                     </td>
                     <td>
-                        <input type="text" id="lastName" placeholder="Last name" required>
+                        <input type="text" class="inputInfo" id="lastName" placeholder="Last name" required>
                     </td>
                     <td>
-                        <input type="text" id="number" placeholder="Phone number" required>
+                        <input type="text" class="inputInfo" id="number" placeholder="Phone number" required>
                     </td>
                     <td>
-                        <input type="email" id="email" placeholder="Email" required>
+                        <input type="email" class="inputInfo" id="email" placeholder="Email" required>
                     </td>
                     <td>
                         <button id="editButton" type="button" class="btn btn-dark" onclick="editContact();">
@@ -55,11 +59,11 @@
                         <button id="deleteButton" type="button" class="btn btn-dark" onclick="deleteContact();">
                             Destroy 
                         </button>
-                        <button id="addContactButton" type="button" class="btn btn-dark" onclick="addContact();">
+                        <button id="addContactButton" type="button" class="btn btn-dark" onclick="addContactHandler();">
                             Append Entry 
                         </button>
                     </td>
-                </tr>
+                </tr> -->
             </table>
 
         </div>
@@ -70,18 +74,148 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
         <script>
-            function logOut() {
-                alert("logged out");
-            }
             function editContact() {
-                alert("editing contact");
+                // Find table row to be modified using RegEx
+                let ID = event.srcElement.id;
+                let currentRowID = ID.match(/\d+/);
+
+
+                // Make current row modifiable
+                unlockInput(currentRowID);
+
+                // Change "Edit" button to "Done"
+                $("#editButton" + currentRowID).hide();
+                $("#deleteButton" + currentRowID).hide();
+                $("#doneButton" + currentRowID).show();
+
+
+                //alert("editing contact");
+            }
+            function doneEditingHandler() {
+                // Find table row to be modified using RegEx
+                let ID = event.srcElement.id;
+                let currentRowID = ID.match(/\d+/);
+
+
+                // Grab and store each field in a variable from current row
+                let firstName = $("#firstName" + currentRowID).val();
+                let lastName = $("#lastName" + currentRowID).val();
+                let phoneNumber = $("#number" + currentRowID).val();
+                let email = $("#email" + currentRowID).val();
+
+                // Function call to editContact with proper values
+
+
+                // Make current row unmodifiable
+                lockInput(currentRowID);
+
+                // change buttons to "Edit" and "Delete"
+                $("#doneButton" + currentRowID).hide();
+                $("#editButton" + currentRowID).show();
+                $("#deleteButton" + currentRowID).show();
             }
             function deleteContact() {
-                alert("deleted contact");
+                // Find table row to be deleted using RegEx
+                let ID = event.srcElement.id;
+                let currentRowID = ID.match(/\d+/);
+
+                // Function call to deleteContact
+
+
+                // Remove row from table
+                $("#" + currentRowID).remove();
+
+                //alert("deleted contact");
             }
-            function addContact() {
-                alert("added contact");
+            function addContactHandler() {
+                // Grab and store each field in a variable from current row
+                let firstName = $("#firstName" + rowID).val();
+                let lastName = $("#lastName" + rowID).val();
+                let phoneNumber = $("#number" + rowID).val();
+                let email = $("#email" + rowID).val();
+
+                
+                // Function call to addContact with proper values
+                //alert("Contact made with " + firstName + " " + lastName + " " + phoneNumber + " " + email);
+                addContact(firstName, lastName, phoneNumber, email);
+
+                // Make current row unmodifiable
+                lockInput(rowID);
+
+                // change "Add contact" button to "Edit" and "Delete"
+                $("#addContactButton" + rowID).hide();
+                $("#editButton" + rowID).show();
+                $("#deleteButton" + rowID).show();
+
+                // Append new empty contacts row
+                createEmptyContactRow();
+                //alert("added contact");
             }
+            function lockInput(currentRowID) {
+                $("#firstName" + currentRowID).prop("readonly", true);
+                $("#lastName" + currentRowID).prop("readonly", true);
+                $("#number" + currentRowID).prop("readonly", true);
+                $("#email" + currentRowID).prop("readonly", true);
+
+                $("#firstName" + currentRowID).css({
+                    'border': 'none',
+                    'background': 'transparent'
+                });
+                $("#lastName" + currentRowID).css({
+                    'border': 'none',
+                    'background': 'transparent'
+                });
+                $("#number" + currentRowID).css({
+                    'border': 'none',
+                    'background': 'transparent'
+                });
+                $("#email" + currentRowID).css({
+                    'border': 'none',
+                    'background': 'transparent'
+                });
+            }
+            function unlockInput(currentRowID) {
+                $("#firstName" + currentRowID).prop("readonly", false);
+                $("#lastName" + currentRowID).prop("readonly", false);
+                $("#number" + currentRowID).prop("readonly", false);
+                $("#email" + currentRowID).prop("readonly", false);
+
+                $("#firstName" + currentRowID).css({
+                    'border': '1px solid grey',
+                    'background': 'white'
+                });
+                $("#lastName" + currentRowID).css({
+                    'border': '1px solid grey',
+                    'background': 'white'
+                });
+                $("#number" + currentRowID).css({
+                    'border': '1px solid grey',
+                    'background': 'white'
+                });
+                $("#email" + currentRowID).css({
+                    'border': '1px solid grey',
+                    'background': 'white'
+                });
+            }
+            function createEmptyContactRow() {
+                $("table").append(createEmptyContactRowHelper());  
+                $("#addContactButton" + rowID).show();
+                $("#editButton" + rowID).hide();
+                $("#deleteButton" + rowID).hide();
+                $("#doneButton" + rowID).hide();
+            }
+            var rowID = -1;
+            function createEmptyContactRowHelper() {     
+                rowID++;
+                return '<tr id="' + rowID + '"><td><input type="text" class="inputInfo" id="firstName' + rowID + '" placeholder="First name" required></td><td><input type="text" class="inputInfo" id="lastName' + rowID + '" placeholder="Last name" required></td><td><input type="text" class="inputInfo" id="number' + rowID + '" placeholder="Phone number" required></td><td><input type="email" class="inputInfo" id="email' + rowID + '" placeholder="Email" required></td><td><button id="editButton' + rowID + '" type="button" class="btn btn-dark" onclick="editContact();";>Modify</button><button id="deleteButton' + rowID + '" type="button" class="btn btn-dark" onclick="deleteContact();";>Destroy</button><button id="doneButton' + rowID + '" type="button" class="btn btn-dark" onclick="doneEditingHandler();";>Done</button><button id="addContactButton' + rowID + '" type="button" class="btn btn-dark" onclick="addContactHandler();";>Append Entry</button></td></tr>';
+
+            }
+        
+            $(document).ready(function () {
+                $("table").append(createEmptyContactRow());                
+            });
+
+
         </script>
 
     </body>
