@@ -1,13 +1,15 @@
 const urlBase = 'http://cop4331-spring.xyz/LAMPAPI';
 const extension = 'php';
 
-var userId = 0;
+//var userId = 0;
+localStorage.setItem("userId", 0);
 let firstName = "";
 let lastName = "";
 
 function doLogin()
 {
-	userId = 0;
+	//userId = 0;
+	localStorage.setItem("userId", 0);
 	firstName = "";
 	lastName = "";
 
@@ -33,12 +35,13 @@ function doLogin()
 			if (this.readyState == 4 && this.status == 200)
 			{
 				let jsonObject = JSON.parse( xhr.responseText );
-				userId = jsonObject.id;
-				//console.log("first log:" + userId);
+				//userId = jsonObject.id;
+				localStorage.setItem("userId", jsonObject.id);
+				//console.log("first log:" + localStorage.getItem("userId"));
 				//alert(userId);
 
 
-				if( userId < 1 )
+				if(parseInt(localStorage.getItem("userId")) < 1)
 				{
 					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
 					return;
@@ -47,14 +50,10 @@ function doLogin()
 				firstName = jsonObject.firstName;
 				lastName = jsonObject.lastName;
 
-				//saveCookie();
 
 				window.location.href = "contacts-index.html";
 
-				//readCookie();
-				//console.log("second log:" + userId);
-
-        //window.location.href = "color.html";
+				//console.log("second log:" + localStorage.getItem("userId"));
 
 			}
 		};
@@ -185,6 +184,7 @@ function doLogout()
 	firstName = "";
 	lastName = "";
 	document.cookie = "firstName= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+	localStorage.clear();
 	window.location.href = "index.html";
 }
 
@@ -194,10 +194,11 @@ function addContact(fName, lName, pNumber, email)
 	// let newContact = document.getElementById("contactText").value;
 	// document.getElementById("contactAddResult").innerHTML = "";
 	//console.log("user id is: " + userId);
-  //let tmp = {color:newContact,userId,userId};
-  // let newContactSplit = newContact.split(" ");
-  // let tmp = {firstName:newContactSplit[0], lastName:newContactSplit[1], phone:newContactSplit[2], email:newContactSplit[3], userId:userId}
-	let tmp = {firstName:fName, lastName:lName, phone:pNumber, email:email, userId:userId}
+    //let tmp = {color:newContact,userId,userId};
+    // let newContactSplit = newContact.split(" ");
+    // let tmp = {firstName:newContactSplit[0], lastName:newContactSplit[1], phone:newContactSplit[2], email:newContactSplit[3], userId:userId}
+	//let tmp = {firstName:fName, lastName:lName, phone:pNumber, email:email, userId:userId};
+	let tmp = {firstName:fName, lastName:lName, phone:pNumber, email:email, userId:parseInt(localStorage.getItem("userId"))};
 
 	//let newContact = document.getElementById("contactText").value;
 	//document.getElementById("contactAddResult").innerHTML = "";
@@ -219,7 +220,8 @@ function addContact(fName, lName, pNumber, email)
 		{
 			if (this.readyState == 4 && this.status == 200)
 			{
-				alert("contact added successfully");
+				console.log("userid in addContact(): " + parseInt(localStorage.getItem("userId")));
+				//alert("contact added successfully");
 				// document.getElementById("contactAddResult").innerHTML = "Contact has been added";
 			}
 		};

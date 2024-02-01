@@ -74,6 +74,11 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
         <script>
+            var rowID = -1;
+            // Loads the first 10 contacts (if they exist) from the database
+            function fetchFirstLoadedContacts() {
+
+            }
             function editContact() {
                 // Find table row to be modified using RegEx
                 let ID = event.srcElement.id;
@@ -204,11 +209,9 @@
                 $("#deleteButton" + rowID).hide();
                 $("#doneButton" + rowID).hide();
             }
-            var rowID = -1;
             function createEmptyContactRowHelper() {     
                 rowID++;
                 return '<tr id="' + rowID + '"><td><input type="text" class="inputInfo" id="firstName' + rowID + '" placeholder="First name" required></td><td><input type="text" class="inputInfo" id="lastName' + rowID + '" placeholder="Last name" required></td><td><input type="text" class="inputInfo" id="number' + rowID + '" placeholder="Phone number" required></td><td><input type="email" class="inputInfo" id="email' + rowID + '" placeholder="Email" required></td><td><button id="editButton' + rowID + '" type="button" class="btn btn-dark" onclick="editContact();";>Modify</button><button id="deleteButton' + rowID + '" type="button" class="btn btn-dark" onclick="deleteContact();";>Destroy</button><button id="doneButton' + rowID + '" type="button" class="btn btn-dark" onclick="doneEditingHandler();";>Done</button><button id="addContactButton' + rowID + '" type="button" class="btn btn-dark" onclick="addContactHandler();";>Append Entry</button></td></tr>';
-
             }
         
             $(document).ready(function () {
