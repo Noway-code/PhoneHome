@@ -2,12 +2,14 @@ const urlBase = 'http://cop4331-spring.xyz/LAMPAPI';
 const extension = 'php';
 
 var userId = 0;
+sessionStorage.setItem("userId", 0);
 let firstName = "";
 let lastName = "";
 
 function doLogin()
 {
-	userId = 0;
+	//userId = 0;
+	sessionStorage.setItem("userId", 0);
 	firstName = "";
 	lastName = "";
 
@@ -33,8 +35,9 @@ function doLogin()
 			if (this.readyState == 4 && this.status == 200)
 			{
 				let jsonObject = JSON.parse( xhr.responseText );
-				userId = jsonObject.id;
-				//console.log("first log:" + userId);
+				//userId = jsonObject.id;
+				sessionStorage.setItem("userId", jsonObject.id);
+				console.log("first log:" + sessionStorage.getItem("userId"));
 				//alert(userId);
 
 
@@ -52,7 +55,7 @@ function doLogin()
 				window.location.href = "contacts-index.html";
 
 				//readCookie();
-				//console.log("second log:" + userId);
+				console.log("second log:" + sessionStorage.getItem("userId"));
 
         //window.location.href = "color.html";
 
@@ -197,7 +200,8 @@ function addContact(fName, lName, pNumber, email)
   //let tmp = {color:newContact,userId,userId};
   // let newContactSplit = newContact.split(" ");
   // let tmp = {firstName:newContactSplit[0], lastName:newContactSplit[1], phone:newContactSplit[2], email:newContactSplit[3], userId:userId}
-	let tmp = {firstName:fName, lastName:lName, phone:pNumber, email:email, userId:userId}
+	let tmp = {firstName:fName, lastName:lName, phone:pNumber, email:email, userId:userId};
+	let tmp = {firstName:fName, lastName:lName, phone:pNumber, email:email, userId:sessionStorage.getItem("userId")};
 
 	//let newContact = document.getElementById("contactText").value;
 	//document.getElementById("contactAddResult").innerHTML = "";
@@ -219,7 +223,7 @@ function addContact(fName, lName, pNumber, email)
 		{
 			if (this.readyState == 4 && this.status == 200)
 			{
-				console.log("userid in addContact(): " + userId);
+				console.log("userid in addContact(): " + sessionStorage.getItem("userId"));
 				//alert("contact added successfully");
 				// document.getElementById("contactAddResult").innerHTML = "Contact has been added";
 			}
