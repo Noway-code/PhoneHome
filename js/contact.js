@@ -24,7 +24,7 @@ function fetchFirstLoadedContacts() {
                 }
 				for (let i = 0; i < jsonObject.results.length; i++) {
 					createContact(jsonObject.results[i].FirstName, jsonObject.results[i].LastName, 
-                        jsonObject.results[i].Phone, jsonObject.results[i].Email);
+                        jsonObject.results[i].Phone, jsonObject.results[i].Email, i);
 				}
 			}
 		}
@@ -74,7 +74,8 @@ function doneEditingHandler() {
     $("#editButton" + currentRowID).show();
     $("#deleteButton" + currentRowID).show();
 }
-function deleteContactHandler(rowNum) {
+
+function deleteContactHandler() {
     // Find table row to be deleted using RegEx
     let ID = event.srcElement.id;
     let currentRowID = ID.match(/\d+/);
@@ -84,13 +85,14 @@ function deleteContactHandler(rowNum) {
     let lastName = $("#lastName" + currentRowID).val();
 
     // Function call to deleteContact
-    deleteContact(firstName, lastName, parseInt(localStorage.getItem("userId")));
+    deleteContact(firstName, lastName, );
 
     // Remove row from table
     $("#" + currentRowID).remove();
 
-    alert("deleted contact");
+    //alert("deleted contact");
 }
+
 function addContactHandler() {
     // Grab and store each field in a variable from current row
     let firstName = document.getElementById("firstName").value;
@@ -173,8 +175,9 @@ function createEmptyContactRow() {
     $("#deleteButton" + rowID).hide();
     $("#doneButton" + rowID).hide();
 }
-function createContact(fName, lName, pNumber, email) {
+function createContact(fName, lName, pNumber, email, row) {
     $("table").append(createContactHelper(fName, lName, pNumber, email));  
+    
     $("#addContactButton" + rowID).hide();
     $("#editButton" + rowID).show();
     $("#deleteButton" + rowID).show();
