@@ -124,13 +124,17 @@
                 let ID = event.srcElement.id;
                 let currentRowID = ID.match(/\d+/);
 
-                // Function call to deleteContact
+                // Grab and store each field in a variable from current row
+                let firstName = $("#firstName" + currentRowID).val();
+                let lastName = $("#lastName" + currentRowID).val();
 
+                // Function call to deleteContact
+                deleteContact(firstName, lastName, parseInt(localStorage.getItem("userId")));
 
                 // Remove row from table
                 $("#" + currentRowID).remove();
 
-                //alert("deleted contact");
+                alert("deleted contact");
             }
             function addContactHandler() {
                 // Grab and store each field in a variable from current row
