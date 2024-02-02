@@ -234,6 +234,35 @@ function addContact(fName, lName, pNumber, email)
 	}
 
 }
+
+function deleteContact() {
+	// let tmp = {firstName:fName, lastName:lName, phone:pNumber, email:email, userId:parseInt(localStorage.getItem("userId"))};
+	let tmp = {ID:}
+	let jsonPayload = JSON.stringify( tmp );
+
+
+	let url = urlBase + '/DeleteContact.' + extension;
+
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.onreadystatechange = function()
+		{
+			if (this.readyState == 4 && this.status == 200)
+			{
+				console.log("userid in deleteContact(): " + parseInt(localStorage.getItem("userId")));
+				alert("contact deleted successfully");
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		alert("error in deleting contact");
+	}
+}
 // function addColor()
 // {
 // 	let newColor = document.getElementById("colorText").value;
