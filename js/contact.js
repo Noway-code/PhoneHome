@@ -113,7 +113,9 @@ function addContactHandler() {
     addContact(firstName, lastName, phoneNumber, email);
 
     // Clear table
-    $("table tbody tr:not(first:)").remove();
+    for (let i = 1; i < rowID; i++) {
+        $("#" + i).remove();
+    }
 
     fetchFirstLoadedContacts()
     
