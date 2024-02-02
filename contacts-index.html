@@ -213,8 +213,8 @@
                 $("#deleteButton" + rowID).hide();
                 $("#doneButton" + rowID).hide();
             }
-            function createContact() {
-                $("table").append(createContactHelper());  
+            function createContact(fName, lName, pNumber, email) {
+                $("table").append(createContactHelper(fName, lName, pNumber, email));  
                 $("#addContactButton" + rowID).show();
                 $("#editButton" + rowID).hide();
                 $("#deleteButton" + rowID).hide();
