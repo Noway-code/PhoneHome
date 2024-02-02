@@ -235,8 +235,8 @@ function addContact(fName, lName, pNumber, email)
 
 }
 
-function deleteContact() {
-	let tmp = {firstName:fName, lastName:lName, phone:pNumber, email:email, userId:parseInt(localStorage.getItem("userId"))};
+function deleteContact(fName, lName) {
+	let tmp = {firstName:fName, lastName:lName, userId:parseInt(localStorage.getItem("userId"))};
 	
 	let jsonPayload = JSON.stringify( tmp );
 
