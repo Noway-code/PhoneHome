@@ -253,7 +253,7 @@ function deleteContact(fName, lName) {
 			if (this.readyState == 4 && this.status == 200)
 			{
 				console.log("userid in deleteContact(): " + parseInt(localStorage.getItem("userId")));
-				alert("contact deleted successfully");
+				//alert("contact deleted successfully");
 			}
 		};
 		xhr.send(jsonPayload);

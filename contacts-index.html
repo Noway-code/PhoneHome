@@ -128,7 +128,6 @@
                 let firstName = $("#firstName" + currentRowID).val();
                 let lastName = $("#lastName" + currentRowID).val();
 
-                alert(firstName);
                 // Function call to deleteContact
                 deleteContact(firstName, lastName, parseInt(localStorage.getItem("userId")));
 
@@ -233,7 +232,7 @@
         
             $(document).ready(function () {
                 $("table").append(createEmptyContactRow());  
-                $("table").append(createContact("david", "david", "david", "david"));              
+                //$("table").append(createContact("david", "david", "david", "david"));              
             });
 
 
