@@ -34,12 +34,11 @@ function fetchFirstLoadedContacts() {
 
 	}
 }
-function editContact() {
+function editContactHandler() {
     // Find table row to be modified using RegEx
     let ID = event.srcElement.id;
     let currentRowID = ID.match(/\d+/);
 
-    alert.
 
     // Make current row modifiable
     unlockInput(currentRowID);
@@ -187,7 +186,7 @@ function createContact(fName, lName, pNumber, email, ID) {
 }
 function createEmptyContactRowHelper() {     
     rowID++;
-    return '<tr id="' + rowID + '"><td><input type="text" class="inputInfo" id="firstName' + rowID + '" placeholder="First name" required></td><td><input type="text" class="inputInfo" id="lastName' + rowID + '" placeholder="Last name" required></td><td><input type="text" class="inputInfo" id="number' + rowID + '" placeholder="Phone number" required></td><td><input type="email" class="inputInfo" id="email' + rowID + '" placeholder="Email" required></td><td><button id="editButton' + rowID + '" type="button" class="btn btn-dark" onclick="editContact();";>Modify</button><button id="deleteButton' + rowID + '" type="button" class="btn btn-dark" onclick="deleteContactHandler();";>Destroy</button><button id="doneButton' + rowID + '" type="button" class="btn btn-dark" onclick="doneEditingHandler();";>Done</button><button id="addContactButton' + rowID + '" type="button" class="btn btn-dark" onclick="addContactHandler();";>Append Entry</button></td></tr>';
+    return '<tr id="' + rowID + '"><td><input type="text" class="inputInfo" id="firstName' + rowID + '" placeholder="First name" required></td><td><input type="text" class="inputInfo" id="lastName' + rowID + '" placeholder="Last name" required></td><td><input type="text" class="inputInfo" id="number' + rowID + '" placeholder="Phone number" required></td><td><input type="email" class="inputInfo" id="email' + rowID + '" placeholder="Email" required></td><td><button id="editButton' + rowID + '" type="button" class="btn btn-dark" onclick="editContactHandler();";>Modify</button><button id="deleteButton' + rowID + '" type="button" class="btn btn-dark" onclick="deleteContactHandler();";>Destroy</button><button id="doneButton' + rowID + '" type="button" class="btn btn-dark" onclick="doneEditingHandler();";>Done</button><button id="addContactButton' + rowID + '" type="button" class="btn btn-dark" onclick="addContactHandler();";>Append Entry</button></td></tr>';
 }
 function createContactHelper(fName, lName, pNumber, email) {     
     rowID++;
