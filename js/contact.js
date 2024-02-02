@@ -117,10 +117,12 @@ function addContactHandler() {
         $("#" + i).remove();
     }
 
-    // Give server time to process add contact
-    setTimeout(5000);
+    // Give server time to process add contact before loading again
 
-    fetchFirstLoadedContacts();
+    setTimeout(() => {
+        fetchFirstLoadedContacts();
+      }, 200);
+    
     
     /*
     // Make current row unmodifiable
