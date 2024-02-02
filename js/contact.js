@@ -176,7 +176,7 @@ function createEmptyContactRow() {
     $("#deleteButton" + rowID).hide();
     $("#doneButton" + rowID).hide();
 }
-function createContact(fName, lName, pNumber, email, ID) {
+function createContact(fName, lName, pNumber, email, userID) {
     $("table").append(createContactHelper(fName, lName, pNumber, email));  
     
     $("#addContactButton" + rowID).hide();
@@ -184,7 +184,10 @@ function createContact(fName, lName, pNumber, email, ID) {
     $("#deleteButton" + rowID).show();
     $("#doneButton" + rowID).hide();
     lockInput(rowID);
-    idlist[rowID] = ID;
+
+    let ID = event.srcElement.id;
+    let currentRowID = ID.match(/\d+/);
+    idlist[currentRowID] = userID;
 }
 function createEmptyContactRowHelper() {     
     rowID++;
