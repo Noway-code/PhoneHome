@@ -1,5 +1,6 @@
 const urlBase = 'http://cop4331-spring.xyz/LAMPAPI';
 const extension = 'php';
+<script src="contact.js"></script>
 
 //var userId = 0;
 //localStorage.setItem("userId", 0);
@@ -234,6 +235,42 @@ function addContact(fName, lName, pNumber, email)
 	}
 
 }
+
+function searchContacts ()
+{
+	let tmp = {userId: parseInt(localStorage.getItem("userId")), search: "" };
+	
+	let jsonPayload = JSON.stringify( tmp );
+
+	let url = urlBase + '/SearchContacts.' + extension;
+	let xhr = new XMLHttpRequest();
+
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+	try
+	{
+		xhr.onreadystatechange = function()
+	 	{
+			if (this.readyState == 4 && this.status == 200) {
+				let jsonObject = JSON.parse(xhr.responseText);
+                if (jsonObject.error) {
+                    console.log(jsonObject.error);
+                    return;
+                }
+				for (let i = 0; i < jsonObject.results.length; i++) {
+					createContact(jsonObject.results[i].FirstName , jsonObject.results[i].LastName , jsonObject.results[i].Phone, jsonObject.results[i].Email);
+				}
+			}
+		}
+		xhr.send(jsonPayload);
+	}
+	catch (err) {
+
+	}
+}
+
+
 // function addColor()
 // {
 // 	let newColor = document.getElementById("colorText").value;
