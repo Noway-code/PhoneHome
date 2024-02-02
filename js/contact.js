@@ -121,7 +121,7 @@ function addContactHandler() {
 
     setTimeout(() => {
         fetchFirstLoadedContacts();
-      }, 200);
+      }, 100);
     
     
     /*
