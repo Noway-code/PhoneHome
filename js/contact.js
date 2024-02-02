@@ -113,7 +113,7 @@ function addContactHandler() {
     addContact(firstName, lastName, phoneNumber, email);
 
     // Clear table
-    for (let i = 1; i < rowID; i++) {
+    for (let i = 0; i < rowID; i++) {
         $("#" + i).remove();
     }
 
