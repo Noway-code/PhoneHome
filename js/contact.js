@@ -112,7 +112,11 @@ function addContactHandler() {
     //alert("Contact made with " + firstName + " " + lastName + " " + phoneNumber + " " + email);
     addContact(firstName, lastName, phoneNumber, email);
 
+    // Clear table
+    $("#table tbody tr").remove();
 
+    fetchFirstLoadedContacts();
+    
     /*
     // Make current row unmodifiable
     lockInput(rowID);
