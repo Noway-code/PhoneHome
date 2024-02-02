@@ -103,6 +103,9 @@ function addContactHandler() {
     //alert("Contact made with " + firstName + " " + lastName + " " + phoneNumber + " " + email);
     addContact(firstName, lastName, phoneNumber, email);
 
+    createContact(firstName, lastName, phoneNumber, email);
+
+    /*
     // Make current row unmodifiable
     lockInput(rowID);
 
@@ -114,6 +117,7 @@ function addContactHandler() {
     // Append new empty contacts row
     createEmptyContactRow();
     //alert("added contact");
+    */
 }
 function lockInput(currentRowID) {
     $("#firstName" + currentRowID).prop("readonly", true);
