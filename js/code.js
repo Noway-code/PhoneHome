@@ -300,7 +300,7 @@ function deleteContact(fName, lName) {
 }
 
 function editContact(field, edit, ID) {
-	let tmp = {field:field, edit:edit, ID:ID)};
+	let tmp = {field:field, edit:edit, ID:ID};
 	
 	let jsonPayload = JSON.stringify( tmp );
 
