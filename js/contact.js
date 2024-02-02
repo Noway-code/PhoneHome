@@ -56,6 +56,7 @@ function doneEditingHandler() {
     let ID = event.srcElement.id;
     let currentRowID = ID.match(/\d+/);
 
+    console.log("rowID in editContact(): " + currentRowID);
 
     // Grab and store each field in a variable from current row
     let firstName = $("#firstName" + currentRowID).val();
