@@ -1,6 +1,5 @@
 const urlBase = 'http://cop4331-spring.xyz/LAMPAPI';
 const extension = 'php';
-<script src="contact.js"></script>
 
 //var userId = 0;
 //localStorage.setItem("userId", 0);
