@@ -74,7 +74,7 @@ function doneEditingHandler() {
     $("#editButton" + currentRowID).show();
     $("#deleteButton" + currentRowID).show();
 }
-function deleteContactHandler() {
+function deleteContactHandler(rowNum) {
     // Find table row to be deleted using RegEx
     let ID = event.srcElement.id;
     let currentRowID = ID.match(/\d+/);
@@ -142,6 +142,7 @@ function lockInput(currentRowID) {
         'background': 'transparent'
     });
 }
+
 function unlockInput(currentRowID) {
     $("#firstName" + currentRowID).prop("readonly", false);
     $("#lastName" + currentRowID).prop("readonly", false);

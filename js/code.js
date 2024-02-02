@@ -269,6 +269,10 @@ function searchContacts ()
 	}
 }
 
+function deleteContact () {
+	
+}
+
 
 // function addColor()
 // {
