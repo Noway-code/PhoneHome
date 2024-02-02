@@ -185,7 +185,3 @@ function createContactHelper(fName, lName, pNumber, email) {
     return '<tr id="' + rowID + '"><td><input type="text" class="inputInfo" id="firstName' + rowID + '" value="' + fName + '" required></td><td><input type="text" class="inputInfo" id="lastName' + rowID + '" value="' + lName + '" required></td><td><input type="text" class="inputInfo" id="number' + rowID + '" value="' + pNumber + '" required></td><td><input type="email" class="inputInfo" id="email' + rowID + '" value="' + email + '" required></td><td><button id="editButton' + rowID + '" type="button" class="btn btn-dark" onclick="editContact();";>Modify</button><button id="deleteButton' + rowID + '" type="button" class="btn btn-dark" onclick="deleteContactHandler();";>Destroy</button><button id="doneButton' + rowID + '" type="button" class="btn btn-dark" onclick="doneEditingHandler();";>Done</button><button id="addContactButton' + rowID + '" type="button" class="btn btn-dark" onclick="addContactHandler();";>Append Entry</button></td></tr>';
 }
 
-$(document).ready(function () {
-    $("table").append(createEmptyContactRow());  
-    $("table").append(createContact("david", "david", "david", "david"));              
-});
