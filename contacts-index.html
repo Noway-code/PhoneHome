@@ -213,13 +213,25 @@
                 $("#deleteButton" + rowID).hide();
                 $("#doneButton" + rowID).hide();
             }
+            function createContact() {
+                $("table").append(createContactHelper());  
+                $("#addContactButton" + rowID).show();
+                $("#editButton" + rowID).hide();
+                $("#deleteButton" + rowID).hide();
+                $("#doneButton" + rowID).hide();
+            }
             function createEmptyContactRowHelper() {     
                 rowID++;
                 return '<tr id="' + rowID + '"><td><input type="text" class="inputInfo" id="firstName' + rowID + '" placeholder="First name" required></td><td><input type="text" class="inputInfo" id="lastName' + rowID + '" placeholder="Last name" required></td><td><input type="text" class="inputInfo" id="number' + rowID + '" placeholder="Phone number" required></td><td><input type="email" class="inputInfo" id="email' + rowID + '" placeholder="Email" required></td><td><button id="editButton' + rowID + '" type="button" class="btn btn-dark" onclick="editContact();";>Modify</button><button id="deleteButton' + rowID + '" type="button" class="btn btn-dark" onclick="deleteContact();";>Destroy</button><button id="doneButton' + rowID + '" type="button" class="btn btn-dark" onclick="doneEditingHandler();";>Done</button><button id="addContactButton' + rowID + '" type="button" class="btn btn-dark" onclick="addContactHandler();";>Append Entry</button></td></tr>';
             }
+            function createContactHelper(fName, lName, pNumber, email) {     
+                rowID++;
+                return '<tr id="' + rowID + '"><td><input type="text" class="inputInfo" id="firstName' + rowID + '" placeholder="' + fName + '" required></td><td><input type="text" class="inputInfo" id="lastName' + rowID + '" placeholder="Last name" required></td><td><input type="text" class="inputInfo" id="number' + rowID + '" placeholder="Phone number" required></td><td><input type="email" class="inputInfo" id="email' + rowID + '" placeholder="Email" required></td><td><button id="editButton' + rowID + '" type="button" class="btn btn-dark" onclick="editContact();";>Modify</button><button id="deleteButton' + rowID + '" type="button" class="btn btn-dark" onclick="deleteContact();";>Destroy</button><button id="doneButton' + rowID + '" type="button" class="btn btn-dark" onclick="doneEditingHandler();";>Done</button><button id="addContactButton' + rowID + '" type="button" class="btn btn-dark" onclick="addContactHandler();";>Append Entry</button></td></tr>';
+            }
         
             $(document).ready(function () {
-                $("table").append(createEmptyContactRow());                
+                $("table").append(createEmptyContactRow());  
+                $("table").append(createContact("david", "david", "david", "david"));              
             });
 
 
