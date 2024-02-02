@@ -299,13 +299,13 @@ function deleteContact(fName, lName) {
 	}
 }
 
-function editContact(fName, lName) {
-	let tmp = {firstName:fName, lastName:lName, userId:parseInt(localStorage.getItem("userId"))};
+function editContact(field, edit, ID) {
+	let tmp = {field:field, edit:edit, ID:ID)};
 	
 	let jsonPayload = JSON.stringify( tmp );
 
 
-	let url = urlBase + '/DeleteContact.' + extension;
+	let url = urlBase + '/EditContact.' + extension;
 
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
@@ -316,7 +316,7 @@ function editContact(fName, lName) {
 		{
 			if (this.readyState == 4 && this.status == 200)
 			{
-				console.log("userid in deleteContact(): " + parseInt(localStorage.getItem("userId")));
+				console.log("ID in editContact(): " + ID);
 				//alert("contact deleted successfully");
 			}
 		};
@@ -324,7 +324,7 @@ function editContact(fName, lName) {
 	}
 	catch(err)
 	{
-		alert("error in deleting contact");
+		alert("error in editing contact");
 	}
 }
 

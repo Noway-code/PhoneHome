@@ -23,9 +23,8 @@ function fetchFirstLoadedContacts() {
                     return;
                 }
 				for (let i = 0; i < jsonObject.results.length; i++) {
-                    idlist[i] = jsonObject.results[i].ID
 					createContact(jsonObject.results[i].FirstName, jsonObject.results[i].LastName, 
-                        jsonObject.results[i].Phone, jsonObject.results[i].Email, i);
+                        jsonObject.results[i].Phone, jsonObject.results[i].Email, jsonObject.results[i].ID);
 				}
 			}
 		}
@@ -40,6 +39,7 @@ function editContact() {
     let ID = event.srcElement.id;
     let currentRowID = ID.match(/\d+/);
 
+    alert.
 
     // Make current row modifiable
     unlockInput(currentRowID);
@@ -65,7 +65,7 @@ function doneEditingHandler() {
     let email = $("#email" + currentRowID).val();
 
     // Function call to editContact with proper values
-
+    editContact("FirstName", edit, idlist[currenRowID]);
 
     // Make current row unmodifiable
     lockInput(currentRowID);
@@ -86,7 +86,7 @@ function deleteContactHandler() {
     let lastName = $("#lastName" + currentRowID).val();
 
     // Function call to deleteContact
-    deleteContact(firstName, lastName, );
+    deleteContact(firstName, lastName);
 
     // Remove row from table
     $("#" + currentRowID).remove();
@@ -106,7 +106,6 @@ function addContactHandler() {
     //alert("Contact made with " + firstName + " " + lastName + " " + phoneNumber + " " + email);
     addContact(firstName, lastName, phoneNumber, email);
 
-    fetchFirstLoadedContacts();
 
     /*
     // Make current row unmodifiable
@@ -176,7 +175,7 @@ function createEmptyContactRow() {
     $("#deleteButton" + rowID).hide();
     $("#doneButton" + rowID).hide();
 }
-function createContact(fName, lName, pNumber, email, row) {
+function createContact(fName, lName, pNumber, email, ID) {
     $("table").append(createContactHelper(fName, lName, pNumber, email));  
     
     $("#addContactButton" + rowID).hide();
@@ -184,6 +183,7 @@ function createContact(fName, lName, pNumber, email, row) {
     $("#deleteButton" + rowID).show();
     $("#doneButton" + rowID).hide();
     lockInput(rowID);
+    idlist[rowID] = ID;
 }
 function createEmptyContactRowHelper() {     
     rowID++;
