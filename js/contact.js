@@ -93,10 +93,10 @@ function deleteContactHandler() {
 }
 function addContactHandler() {
     // Grab and store each field in a variable from current row
-    let firstName = $("#firstName" + rowID).val();
-    let lastName = $("#lastName" + rowID).val();
-    let phoneNumber = $("#number" + rowID).val();
-    let email = $("#email" + rowID).val();
+    let firstName = document.getElementById("firstName").value;
+    let lastName = document.getElementById("lastName").value;
+    let phoneNumber = document.getElementById("number").value;
+    let email = document.getElementById("email").value;
 
     
     // Function call to addContact with proper values
