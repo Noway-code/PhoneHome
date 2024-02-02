@@ -215,11 +215,11 @@
             }
             function createContact(fName, lName, pNumber, email) {
                 $("table").append(createContactHelper(fName, lName, pNumber, email));  
-                $("#addContactButton" + rowID).show();
-                $("#editButton" + rowID).hide();
-                $("#deleteButton" + rowID).hide();
+                $("#addContactButton" + rowID).hide();
+                $("#editButton" + rowID).show();
+                $("#deleteButton" + rowID).show();
                 $("#doneButton" + rowID).hide();
-                lockInput(rowId);
+                lockInput(rowID);
             }
             function createEmptyContactRowHelper() {     
                 rowID++;
