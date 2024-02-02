@@ -6,6 +6,7 @@ const extension = 'php';
 let firstName = "";
 let lastName = "";
 
+
 function doLogin()
 {
 	//userId = 0;
@@ -270,6 +271,35 @@ function searchContacts ()
 }
 
 function deleteContact(fName, lName) {
+	let tmp = {firstName:fName, lastName:lName, userId:parseInt(localStorage.getItem("userId"))};
+	
+	let jsonPayload = JSON.stringify( tmp );
+
+
+	let url = urlBase + '/DeleteContact.' + extension;
+
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.onreadystatechange = function()
+		{
+			if (this.readyState == 4 && this.status == 200)
+			{
+				console.log("userid in deleteContact(): " + parseInt(localStorage.getItem("userId")));
+				//alert("contact deleted successfully");
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		alert("error in deleting contact");
+	}
+}
+
+function editContact(fName, lName) {
 	let tmp = {firstName:fName, lastName:lName, userId:parseInt(localStorage.getItem("userId"))};
 	
 	let jsonPayload = JSON.stringify( tmp );

@@ -1,4 +1,4 @@
-
+const idlist = []
 var rowID = -1;
 // Loads the first 10 contacts (if they exist) from the database
 function fetchFirstLoadedContacts() {
@@ -23,6 +23,7 @@ function fetchFirstLoadedContacts() {
                     return;
                 }
 				for (let i = 0; i < jsonObject.results.length; i++) {
+                    idlist[i] = jsonObject.results[i].ID
 					createContact(jsonObject.results[i].FirstName, jsonObject.results[i].LastName, 
                         jsonObject.results[i].Phone, jsonObject.results[i].Email, i);
 				}
@@ -105,7 +106,7 @@ function addContactHandler() {
     //alert("Contact made with " + firstName + " " + lastName + " " + phoneNumber + " " + email);
     addContact(firstName, lastName, phoneNumber, email);
 
-    createContact(firstName, lastName, phoneNumber, email);
+    fetchFirstLoadedContacts();
 
     /*
     // Make current row unmodifiable
