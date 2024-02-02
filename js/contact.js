@@ -1,10 +1,40 @@
 
 var rowID = -1;
 // Loads the first 10 contacts (if they exist) from the database
-export function fetchFirstLoadedContacts() {
+function fetchFirstLoadedContacts() {
+    let tmp = {userId: parseInt(localStorage.getItem("userId")), search: "" };
+	
+	let jsonPayload = JSON.stringify( tmp );
 
+	let url = urlBase + '/SearchContacts.' + extension;
+	let xhr = new XMLHttpRequest();
+
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+	try
+	{
+		xhr.onreadystatechange = function()
+	 	{
+			if (this.readyState == 4 && this.status == 200) {
+				let jsonObject = JSON.parse(xhr.responseText);
+                if (jsonObject.error) {
+                    console.log(jsonObject.error);
+                    return;
+                }
+				for (let i = 0; i < jsonObject.results.length; i++) {
+					createContact(jsonObject.results[i].FirstName, jsonObject.results[i].LastName, 
+                        jsonObject.results[i].Phone, jsonObject.results[i].Email);
+				}
+			}
+		}
+		xhr.send(jsonPayload);
+	}
+	catch (err) {
+
+	}
 }
-export function editContact() {
+function editContact() {
     // Find table row to be modified using RegEx
     let ID = event.srcElement.id;
     let currentRowID = ID.match(/\d+/);
@@ -21,7 +51,7 @@ export function editContact() {
 
     //alert("editing contact");
 }
-export function doneEditingHandler() {
+function doneEditingHandler() {
     // Find table row to be modified using RegEx
     let ID = event.srcElement.id;
     let currentRowID = ID.match(/\d+/);
@@ -33,7 +63,7 @@ export function doneEditingHandler() {
     let phoneNumber = $("#number" + currentRowID).val();
     let email = $("#email" + currentRowID).val();
 
-    // export function call to editContact with proper values
+    // Function call to editContact with proper values
 
 
     // Make current row unmodifiable
@@ -44,7 +74,7 @@ export function doneEditingHandler() {
     $("#editButton" + currentRowID).show();
     $("#deleteButton" + currentRowID).show();
 }
-export function deleteContactHandler() {
+function deleteContactHandler() {
     // Find table row to be deleted using RegEx
     let ID = event.srcElement.id;
     let currentRowID = ID.match(/\d+/);
@@ -53,7 +83,7 @@ export function deleteContactHandler() {
     let firstName = $("#firstName" + currentRowID).val();
     let lastName = $("#lastName" + currentRowID).val();
 
-    // export function call to deleteContact
+    // Function call to deleteContact
     deleteContact(firstName, lastName, parseInt(localStorage.getItem("userId")));
 
     // Remove row from table
@@ -61,7 +91,7 @@ export function deleteContactHandler() {
 
     alert("deleted contact");
 }
-export function addContactHandler() {
+function addContactHandler() {
     // Grab and store each field in a variable from current row
     let firstName = $("#firstName" + rowID).val();
     let lastName = $("#lastName" + rowID).val();
@@ -69,7 +99,7 @@ export function addContactHandler() {
     let email = $("#email" + rowID).val();
 
     
-    // export function call to addContact with proper values
+    // Function call to addContact with proper values
     //alert("Contact made with " + firstName + " " + lastName + " " + phoneNumber + " " + email);
     addContact(firstName, lastName, phoneNumber, email);
 
@@ -85,7 +115,7 @@ export function addContactHandler() {
     createEmptyContactRow();
     //alert("added contact");
 }
-export function lockInput(currentRowID) {
+function lockInput(currentRowID) {
     $("#firstName" + currentRowID).prop("readonly", true);
     $("#lastName" + currentRowID).prop("readonly", true);
     $("#number" + currentRowID).prop("readonly", true);
@@ -108,7 +138,7 @@ export function lockInput(currentRowID) {
         'background': 'transparent'
     });
 }
-export function unlockInput(currentRowID) {
+function unlockInput(currentRowID) {
     $("#firstName" + currentRowID).prop("readonly", false);
     $("#lastName" + currentRowID).prop("readonly", false);
     $("#number" + currentRowID).prop("readonly", false);
@@ -131,14 +161,14 @@ export function unlockInput(currentRowID) {
         'background': 'white'
     });
 }
-export function createEmptyContactRow() {
+function createEmptyContactRow() {
     $("table").append(createEmptyContactRowHelper());  
     $("#addContactButton" + rowID).show();
     $("#editButton" + rowID).hide();
     $("#deleteButton" + rowID).hide();
     $("#doneButton" + rowID).hide();
 }
-export function createContact(fName, lName, pNumber, email) {
+function createContact(fName, lName, pNumber, email) {
     $("table").append(createContactHelper(fName, lName, pNumber, email));  
     $("#addContactButton" + rowID).hide();
     $("#editButton" + rowID).show();
@@ -146,15 +176,16 @@ export function createContact(fName, lName, pNumber, email) {
     $("#doneButton" + rowID).hide();
     lockInput(rowID);
 }
-export function createEmptyContactRowHelper() {     
+function createEmptyContactRowHelper() {     
     rowID++;
     return '<tr id="' + rowID + '"><td><input type="text" class="inputInfo" id="firstName' + rowID + '" placeholder="First name" required></td><td><input type="text" class="inputInfo" id="lastName' + rowID + '" placeholder="Last name" required></td><td><input type="text" class="inputInfo" id="number' + rowID + '" placeholder="Phone number" required></td><td><input type="email" class="inputInfo" id="email' + rowID + '" placeholder="Email" required></td><td><button id="editButton' + rowID + '" type="button" class="btn btn-dark" onclick="editContact();";>Modify</button><button id="deleteButton' + rowID + '" type="button" class="btn btn-dark" onclick="deleteContactHandler();";>Destroy</button><button id="doneButton' + rowID + '" type="button" class="btn btn-dark" onclick="doneEditingHandler();";>Done</button><button id="addContactButton' + rowID + '" type="button" class="btn btn-dark" onclick="addContactHandler();";>Append Entry</button></td></tr>';
 }
-export function createContactHelper(fName, lName, pNumber, email) {     
+function createContactHelper(fName, lName, pNumber, email) {     
     rowID++;
     return '<tr id="' + rowID + '"><td><input type="text" class="inputInfo" id="firstName' + rowID + '" value="' + fName + '" required></td><td><input type="text" class="inputInfo" id="lastName' + rowID + '" value="' + lName + '" required></td><td><input type="text" class="inputInfo" id="number' + rowID + '" value="' + pNumber + '" required></td><td><input type="email" class="inputInfo" id="email' + rowID + '" value="' + email + '" required></td><td><button id="editButton' + rowID + '" type="button" class="btn btn-dark" onclick="editContact();";>Modify</button><button id="deleteButton' + rowID + '" type="button" class="btn btn-dark" onclick="deleteContactHandler();";>Destroy</button><button id="doneButton' + rowID + '" type="button" class="btn btn-dark" onclick="doneEditingHandler();";>Done</button><button id="addContactButton' + rowID + '" type="button" class="btn btn-dark" onclick="addContactHandler();";>Append Entry</button></td></tr>';
 }
 
-
-
-
+$(document).ready(function () {
+    $("table").append(createEmptyContactRow());  
+    $("table").append(createContact("david", "david", "david", "david"));              
+});

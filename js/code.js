@@ -1,8 +1,6 @@
 const urlBase = 'http://cop4331-spring.xyz/LAMPAPI';
 const extension = 'php';
 
-import * as contactFunction from './contact.js'
-
 //var userId = 0;
 //localStorage.setItem("userId", 0);
 let firstName = "";
@@ -260,7 +258,7 @@ function searchContacts ()
                     return;
                 }
 				for (let i = 0; i < jsonObject.results.length; i++) {
-					contactFunction.createContact(jsonObject.results[i].FirstName , jsonObject.results[i].LastName , jsonObject.results[i].Phone, jsonObject.results[i].Email);
+					
 				}
 			}
 		}
