@@ -113,9 +113,9 @@ function addContactHandler() {
     addContact(firstName, lastName, phoneNumber, email);
 
     // Clear table
-    $("table").remove();
+    $("table tbody tr").remove();
 
-    fetchFirstLoadedContacts();
+    fetchFirstLoadedContacts()
     
     /*
     // Make current row unmodifiable
