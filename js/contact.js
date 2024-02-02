@@ -22,6 +22,7 @@ function fetchFirstLoadedContacts() {
                     console.log(jsonObject.error);
                     return;
                 }
+                console.log("id: " + jsonObject.results[i].ID);
 				for (let i = 0; i < jsonObject.results.length; i++) {
 					createContact(jsonObject.results[i].FirstName, jsonObject.results[i].LastName, 
                         jsonObject.results[i].Phone, jsonObject.results[i].Email, jsonObject.results[i].ID);
