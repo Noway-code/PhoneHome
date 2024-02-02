@@ -118,7 +118,7 @@ function addContactHandler() {
     }
 
     // Give server time to process add contact
-    setTimeout(200);
+    setTimeout(500);
 
     fetchFirstLoadedContacts();
     
