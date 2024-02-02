@@ -175,7 +175,7 @@ function readCookie()
 	{
 		document.getElementById("userName").innerHTML = "Logged in as " + firstName + " " + lastName;
 	}
-	alert("cookie read, userid is: " + userId);
+	//alert("cookie read, userid is: " + userId);
 }
 
 function doLogout()
