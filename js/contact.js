@@ -69,6 +69,9 @@ function doneEditingHandler() {
 
     // Function call to editContact with proper values
     editContact("FirstName", firstName, idlist[currentRowID]);
+    editContact("LastName", lastName, idlist[currentRowID]);
+    editContact("Phone", phoneNumber, idlist[currentRowID]);
+    editContact("Email", email, idlist[currentRowID]);
 
     // Make current row unmodifiable
     lockInput(currentRowID);
