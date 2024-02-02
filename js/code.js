@@ -6,6 +6,7 @@ const extension = 'php';
 let firstName = "";
 let lastName = "";
 
+
 function doLogin()
 {
 	//userId = 0;
@@ -175,7 +176,7 @@ function readCookie()
 	{
 		document.getElementById("userName").innerHTML = "Logged in as " + firstName + " " + lastName;
 	}
-	alert("cookie read, userid is: " + userId);
+	//alert("cookie read, userid is: " + userId);
 }
 
 function doLogout()
@@ -234,6 +235,100 @@ function addContact(fName, lName, pNumber, email)
 	}
 
 }
+
+function searchContacts ()
+{
+	let tmp = {userId: parseInt(localStorage.getItem("userId")), search: "" };
+	
+	let jsonPayload = JSON.stringify( tmp );
+
+	let url = urlBase + '/SearchContacts.' + extension;
+	let xhr = new XMLHttpRequest();
+
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+	try
+	{
+		xhr.onreadystatechange = function()
+	 	{
+			if (this.readyState == 4 && this.status == 200) {
+				let jsonObject = JSON.parse(xhr.responseText);
+                if (jsonObject.error) {
+                    console.log(jsonObject.error);
+                    return;
+                }
+				for (let i = 0; i < jsonObject.results.length; i++) {
+					
+				}
+			}
+		}
+		xhr.send(jsonPayload);
+	}
+	catch (err) {
+
+	}
+}
+
+function deleteContact(fName, lName) {
+	let tmp = {firstName:fName, lastName:lName, userId:parseInt(localStorage.getItem("userId"))};
+	
+	let jsonPayload = JSON.stringify( tmp );
+
+
+	let url = urlBase + '/DeleteContact.' + extension;
+
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.onreadystatechange = function()
+		{
+			if (this.readyState == 4 && this.status == 200)
+			{
+				console.log("userid in deleteContact(): " + parseInt(localStorage.getItem("userId")));
+				//alert("contact deleted successfully");
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		alert("error in deleting contact");
+	}
+}
+
+function editContact(field, edit, ID) {
+	let tmp = {field:field, edit:edit, ID:ID};
+	
+	let jsonPayload = JSON.stringify( tmp );
+
+
+	let url = urlBase + '/EditContact.' + extension;
+
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.onreadystatechange = function()
+		{
+			if (this.readyState == 4 && this.status == 200)
+			{
+				console.log("ID in editContact(): " + ID);
+				//alert("contact deleted successfully");
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		alert("error in editing contact");
+	}
+}
+
+
 // function addColor()
 // {
 // 	let newColor = document.getElementById("colorText").value;
