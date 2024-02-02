@@ -113,11 +113,14 @@ function addContactHandler() {
     addContact(firstName, lastName, phoneNumber, email);
 
     // Clear table
-    for (let i = 0; i < rowID; i++) {
+    for (let i = 0; i <= rowID; i++) {
         $("#" + i).remove();
     }
 
-    fetchFirstLoadedContacts()
+    // Give server time to process add contact
+    setTimeout(200);
+
+    fetchFirstLoadedContacts();
     
     /*
     // Make current row unmodifiable
