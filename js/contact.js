@@ -160,4 +160,4 @@ $(document).ready(function () {
     $("table").append(createContact("david", "david", "david", "david"));              
 });
 
-
+export * from './contact';
