@@ -64,7 +64,7 @@ function doneEditingHandler() {
     let email = $("#email" + currentRowID).val();
 
     // Function call to editContact with proper values
-    editContact("FirstName", firstName, idlist[currenRowID]);
+    editContact("FirstName", firstName, idlist[currentRowID]);
 
     // Make current row unmodifiable
     lockInput(currentRowID);
