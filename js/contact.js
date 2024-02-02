@@ -57,6 +57,7 @@ function doneEditingHandler() {
     let currentRowID = ID.match(/\d+/);
 
     console.log("rowID in editContact(): " + currentRowID);
+    console.log("value: " + idlist[currentRowID]);
 
     // Grab and store each field in a variable from current row
     let firstName = $("#firstName" + currentRowID).val();
@@ -65,7 +66,7 @@ function doneEditingHandler() {
     let email = $("#email" + currentRowID).val();
 
     // Function call to editContact with proper values
-    editContact("FirstName", firstName, idlist[currentRowID-1]);
+    editContact("FirstName", firstName, idlist[currentRowID]);
 
     // Make current row unmodifiable
     lockInput(currentRowID);
