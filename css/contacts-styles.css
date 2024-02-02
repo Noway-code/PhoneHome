@@ -1,11 +1,12 @@
 body {
-	background-color: black;
-	background-image: url('../images/AlienBGstars.png');
-    background-size: cover;
+    background-image: url('/images/bg-main.png');
+    background-attachment: fixed;
+    background-position: center;
+
 }
 
 #title {
-	dispay: block;
+	display: block;
 	font-size: 90px;
 	color: white;
     font-family: 'Ubuntu', sans-serif;
@@ -34,6 +35,7 @@ body {
 	background-color: rgba(178, 178, 178, 0.5);
 	margin: auto;
 	height: 80vh;
+    backdrop-filter: blur(2px);
 }
 
 .inputInfo {
@@ -45,7 +47,7 @@ table {
 	width: 85%;
 	border-collapse: collapse;
 /*	border: solid;*/
-	background-color: rgb(178, 178, 178);	
+	background-color: rgb(178, 178, 178);
 }
 
 th, td {
@@ -75,8 +77,51 @@ td {
 }
 */
 
+
+
 input {
 	border: 1px solid grey;
 	background: white;
+}
+
+#stars {
+    --random-x:0;
+    --random-y:0;
+
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.star-left, .star-right {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    width: 3px;
+    height: 3px;
+    opacity: .2;
+    animation: fly linear infinite, fadeIn steps(2, start) infinite;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.star-left:nth-child(odd), .star-right:nth-child(odd) {
+    animation-duration: 5s;
+}
+
+.star-left:nth-child(even), .star-right:nth-child(even) {
+    animation-duration: 10s;
+}
+
+
+@keyframes fly {
+    from { transform: translate(0, 0); }
+    to { transform: translate(calc(200vw * var(--random-x)), calc(200vh * var(--random-y))); }
+}
+
+@keyframes fadeIn {
+    to { opacity: 1.0; }
 }
 
