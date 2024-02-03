@@ -109,7 +109,8 @@ function doRegister() {
 		xhr.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				let jsonObject = JSON.parse( xhr.responseText );
-                let userId = jsonObject.id;
+				let userId = parseInt(jsonObject.id);
+
 				console.log("test userId: " + userId);
 
 				if( userId < 1 ) {
@@ -118,7 +119,7 @@ function doRegister() {
 				}
 
                 // Store the userId in local storage
-				localStorage.setItem("userId", userId);
+				localStorage.setItem("ID", userId);
 				firstName = tmp.firstName;
 				lastName = tmp.lastName;
 				login = jsonObject.username;
