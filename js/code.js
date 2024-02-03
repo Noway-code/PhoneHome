@@ -65,13 +65,15 @@ function doLogin()
 }
 
 function doRegister() {
-    let firstName = document.getElementById("firstName").value;
-    let lastName = document.getElementById("lastName").value;
+	let firstName = document.getElementById("firstName").value;
+	let lastName = document.getElementById("lastName").value;
 	let login = document.getElementById("registerName").value;
 	let password = document.getElementById("registerPassword").value;
 	let passwordConfirm = document.getElementById("registerConfirmPassword").value;
 
 	document.getElementById("registerResult").innerHTML = "";
+
+	let userId; // Declare userId outside the if block
 
 	if (password !== passwordConfirm) {
 		document.getElementById("registerResult").innerHTML = "Passwords do not match";
@@ -96,27 +98,27 @@ function doRegister() {
 		}
 	}
 
-	let tmp = {firstName:firstName,lastName:lastName,login:login,password:password};
-
-	let jsonPayload = JSON.stringify( tmp );
+	let tmp = { firstName: firstName, lastName: lastName, login: login, password: password };
+	let jsonPayload = JSON.stringify(tmp);
 
 	let url = urlBase + '/Registration.' + extension;
 	let xhr = new XMLHttpRequest();
 
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-	try {
-		xhr.onreadystatechange = function() {
-			if (this.readyState == 4 && this.status == 200) {
-				let jsonObject = JSON.parse( xhr.responseText );
-                let userId = jsonObject.id;
 
-				if( userId < 1 ) {
+	try {
+		xhr.onreadystatechange = function () {
+			if (this.readyState == 4 && this.status == 200) {
+				let jsonObject = JSON.parse(xhr.responseText);
+				userId = jsonObject.id; // Assign value to userId here
+
+				if (userId < 1) {
 					document.getElementById("registerResult").innerHTML = "Registration failed";
 					return;
 				}
 
-                // Store the userId in local storage
+				// Store the userId in local storage
 				localStorage.setItem("userId", userId);
 				firstName = tmp.firstName;
 				lastName = tmp.lastName;
@@ -128,18 +130,17 @@ function doRegister() {
 			}
 		};
 		xhr.send(jsonPayload);
-	}
-	catch(err) {
+	} catch (err) {
 		document.getElementById("registerResult").innerHTML = err.message;
 	}
 }
+
 
 function saveCookie()
 {
 	let minutes = 20;
 	let date = new Date();
 	date.setTime(date.getTime()+(minutes*60*1000));
-	let userId = localStorage.getItem("userId"); // Retrieve userId from local storage
 	document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
 }
 
