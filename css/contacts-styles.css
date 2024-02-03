@@ -2,7 +2,12 @@ body {
     background-image: url('/images/bg-main.png');
     background-attachment: fixed;
     background-position: center;
+    background-size: cover;
+}
 
+.btn.btn-dark{
+  margin: 5px 5px 5px 5px;
+  border-radius: 20px;
 }
 
 #title {
