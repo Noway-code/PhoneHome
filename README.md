@@ -37,12 +37,12 @@ Phone Home is a web-based application that allows users to manage their personal
 
 ## Contribution
 
-- All team members actively participated in the development and presentation.
-- Each member played a crucial role in different aspects of the project.
+All team members actively participated in the development and presentation.
+Each member played a crucial role in different aspects of the project.
 
-- [Camilo Alvarez](https://github.com/Noway-code): Project Manager / Front-end Developer
+- [Camilo Alvarez-Velez](https://github.com/Noway-code): Project Manager & Front-end Developer
 - [David Figueras-Sosa](https://github.com/DavidJFig): Front-end Developer
-- [Ryan Latour](https://github.com/ryanglatour): API Developer & Contributions to Front-end
+- [Ryan Latour](https://github.com/ryanglatour): API & Contributions to Front-end
 - [Jhon Tabio](https://github.com/JhonTabio): Database engineer
 
-**Thank you for your time!**
+### **Thank you for your time!**
