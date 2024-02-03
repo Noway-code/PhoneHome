@@ -109,9 +109,7 @@ function doRegister() {
 		xhr.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				let jsonObject = JSON.parse( xhr.responseText );
-				let userId = parseInt(jsonObject.id);
-
-				console.log("test userId: " + userId);
+                let userId = jsonObject.id;
 
 				if( userId < 1 ) {
 					document.getElementById("registerResult").innerHTML = "Registration failed";
@@ -119,7 +117,7 @@ function doRegister() {
 				}
 
                 // Store the userId in local storage
-				localStorage.setItem("ID", userId);
+				localStorage.setItem("userId", userId);
 				firstName = tmp.firstName;
 				lastName = tmp.lastName;
 				login = jsonObject.username;
@@ -141,6 +139,7 @@ function saveCookie()
 	let minutes = 20;
 	let date = new Date();
 	date.setTime(date.getTime()+(minutes*60*1000));
+	let userId = localStorage.getItem("userId"); // Retrieve userId from local storage
 	document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
 }
 
