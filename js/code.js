@@ -73,7 +73,7 @@ function doRegister() {
 
 	document.getElementById("registerResult").innerHTML = "";
 
-	let userId; // Declare userId outside the if block
+
 
 	if (password !== passwordConfirm) {
 		document.getElementById("registerResult").innerHTML = "Passwords do not match";
@@ -109,9 +109,10 @@ function doRegister() {
 
 	try {
 		xhr.onreadystatechange = function () {
-			if (this.readyState == 4 && this.status == 200) {
+            if (this.readyState == 4) {
+                if (this.status == 200) {
 				let jsonObject = JSON.parse(xhr.responseText);
-				userId = jsonObject.id; // Assign value to userId here
+                    let userId = jsonObject.id;
 
 				if (userId < 1) {
 					document.getElementById("registerResult").innerHTML = "Registration failed";
@@ -120,13 +121,14 @@ function doRegister() {
 
 				// Store the userId in local storage
 				localStorage.setItem("userId", userId);
-				firstName = tmp.firstName;
-				lastName = tmp.lastName;
-				login = jsonObject.username;
-				password = jsonObject.password;
+                    localStorage.setItem("firstName", tmp.firstName);
+                    localStorage.setItem("lastName", tmp.lastName);
 				saveCookie();
 
 				window.location.href = "contacts-index.html";
+                } else {
+                    document.getElementById("registerResult").innerHTML = "Server error: " + xhr.statusText;
+                }
 			}
 		};
 		xhr.send(jsonPayload);
@@ -135,12 +137,11 @@ function doRegister() {
 	}
 }
 
-
-function saveCookie()
-{
+function saveCookie() {
 	let minutes = 20;
 	let date = new Date();
 	date.setTime(date.getTime()+(minutes*60*1000));
+	let userId = localStorage.getItem("userId"); // Retrieve userId from local storage
 	document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
 }
 
