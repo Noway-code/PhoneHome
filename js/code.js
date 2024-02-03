@@ -121,6 +121,7 @@ function doRegister() {
 					return;
 				}
 
+				localStorage.setItem("userId", userId);
 				firstName = tmp.firstName;
 				lastName = tmp.lastName;
 				login = jsonObject.username;
@@ -239,7 +240,7 @@ function addContact(fName, lName, pNumber, email)
 function searchContacts ()
 {
 	let tmp = {userId: parseInt(localStorage.getItem("userId")), search: "" };
-	
+
 	let jsonPayload = JSON.stringify( tmp );
 
 	let url = urlBase + '/SearchContacts.' + extension;
@@ -259,7 +260,7 @@ function searchContacts ()
                     return;
                 }
 				for (let i = 0; i < jsonObject.results.length; i++) {
-					
+
 				}
 			}
 		}
@@ -272,7 +273,7 @@ function searchContacts ()
 
 function deleteContact(fName, lName) {
 	let tmp = {firstName:fName, lastName:lName, userId:parseInt(localStorage.getItem("userId"))};
-	
+
 	let jsonPayload = JSON.stringify( tmp );
 
 
@@ -301,7 +302,7 @@ function deleteContact(fName, lName) {
 
 function editContact(field, edit, ID) {
 	let tmp = {field:field, edit:edit, ID:ID};
-	
+
 	let jsonPayload = JSON.stringify( tmp );
 
 

@@ -155,7 +155,7 @@ input[type="text"],input[type="password"]{
     width: 90%;
     text-align: center;
     margin-left: 5%;
-    font-family: 'QuirkyRobot','Ubuntu', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     color: #ffffff;
 }
 
@@ -276,11 +276,6 @@ select{
 }
 
 
-@font-face {
-    font-family: Kahles;
-    src: url(/fonts/1Kahlesv2.ttf);
-
-}
 
 @font-face {
     font-family: QuirkyRobot;
