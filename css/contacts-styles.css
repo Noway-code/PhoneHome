@@ -1,8 +1,9 @@
-body {
-    background-image: url('/images/bg-main.png');
+body, html {
+    background-image: url('file:///home/jhont/Projects/Javascript/Learning/PhoneHome/images/bg-main.png');
     background-attachment: fixed;
     background-position: center;
-    background-size: cover;
+    background-repeat: repeat;
+    background-attachment: fixed;
 }
 
 .btn.btn-dark{
