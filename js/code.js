@@ -1,15 +1,12 @@
 const urlBase = 'http://cop4331-spring.xyz/LAMPAPI';
 const extension = 'php';
 
-//var userId = 0;
-//localStorage.setItem("userId", 0);
 let firstName = "";
 let lastName = "";
 
 
 function doLogin()
 {
-	//userId = 0;
 	localStorage.setItem("userId", 0);
 	firstName = "";
 	lastName = "";
@@ -113,6 +110,7 @@ function doRegister() {
 			if (this.readyState == 4 && this.status == 200) {
 				let jsonObject = JSON.parse( xhr.responseText );
                 let userId = jsonObject.id;
+				console.log("test userId: " + userId);
 
 				if( userId < 1 ) {
 					document.getElementById("registerResult").innerHTML = "Registration failed";
