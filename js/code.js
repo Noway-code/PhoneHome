@@ -68,10 +68,8 @@ function doLogin()
 }
 
 function doRegister() {
-	userId = 0;
-	firstName = document.getElementById("firstName").value;
-	lastName = document.getElementById("lastName").value;
-
+    let firstName = document.getElementById("firstName").value;
+    let lastName = document.getElementById("lastName").value;
 	let login = document.getElementById("registerName").value;
 	let password = document.getElementById("registerPassword").value;
 	let passwordConfirm = document.getElementById("registerConfirmPassword").value;
@@ -114,14 +112,14 @@ function doRegister() {
 		xhr.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				let jsonObject = JSON.parse( xhr.responseText );
-				userId = jsonObject.id;
-				console.log("userid in doRegister(): " + jsonObject.id);
+                let userId = jsonObject.id;
 
 				if( userId < 1 ) {
 					document.getElementById("registerResult").innerHTML = "Registration failed";
 					return;
 				}
 
+                // Store the userId in local storage
 				localStorage.setItem("userId", userId);
 				firstName = tmp.firstName;
 				lastName = tmp.lastName;
