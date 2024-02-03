@@ -115,6 +115,7 @@ function doRegister() {
 			if (this.readyState == 4 && this.status == 200) {
 				let jsonObject = JSON.parse( xhr.responseText );
 				userId = jsonObject.id;
+				console.log("userid in doRegister(): " + jsonObject.id);
 
 				if( userId < 1 ) {
 					document.getElementById("registerResult").innerHTML = "Registration failed";
