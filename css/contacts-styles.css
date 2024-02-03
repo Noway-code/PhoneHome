@@ -14,8 +14,7 @@ body {
 }
 
 #logOutContainer {
-	position: absolute;
-	right: 0;
+  margin-bottom: 20px;
 }
 
 #searchBarContainer {
