@@ -41,7 +41,7 @@ function fetchFirstLoadedContacts() {
 
 function searchContacts() {
     console.log("trigger");
-    let search = document.getElementById("searchBar").value;
+    /*let search = document.getElementById("searchBar").value;
 
     let tmp = {userId: parseInt(localStorage.getItem("userId")), search: search};
 
@@ -77,7 +77,7 @@ function searchContacts() {
 	}
 	catch (err) {
 
-	}
+	}*/
 }
 
 function editContactHandler() {
