@@ -44,6 +44,7 @@ function searchContacts() {
 
     let tmp = {userId: parseInt(localStorage.getItem("userId")), search: search};
 
+    console.log("trigger");
     console.log(search);
 
 	let jsonPayload = JSON.stringify( tmp );
