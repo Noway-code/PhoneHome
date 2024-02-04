@@ -4,10 +4,10 @@ var rowID = -1;
 function fetchFirstLoadedContacts(search) {
 
     if (search == 1) {
-        let tmp = {userId: parseInt(localStorage.getItem("userId")), search: searchName };
+        let tmp = {userId: parseInt(localStorage.getItem("userId")), search: document.getElementById('searchBar').value };
     }
     else {
-        let tmp = {userId: parseInt(localStorage.getItem("userId")), search: document.getElementById('searchBar').value};
+        let tmp = {userId: parseInt(localStorage.getItem("userId")), search: ""};
     }
 
 	let jsonPayload = JSON.stringify( tmp );
