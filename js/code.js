@@ -236,39 +236,6 @@ function addContact(fName, lName, pNumber, email)
 
 }
 
-function searchContacts ()
-{
-	let tmp = {userId: parseInt(localStorage.getItem("userId")), search: "" };
-
-	let jsonPayload = JSON.stringify( tmp );
-
-	let url = urlBase + '/SearchContacts.' + extension;
-	let xhr = new XMLHttpRequest();
-
-	xhr.open("POST", url, true);
-	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-
-	try
-	{
-		xhr.onreadystatechange = function()
-	 	{
-			if (this.readyState == 4 && this.status == 200) {
-				let jsonObject = JSON.parse(xhr.responseText);
-                if (jsonObject.error) {
-                    console.log(jsonObject.error);
-                    return;
-                }
-				for (let i = 0; i < jsonObject.results.length; i++) {
-
-				}
-			}
-		}
-		xhr.send(jsonPayload);
-	}
-	catch (err) {
-
-	}
-}
 
 function deleteContact(fName, lName) {
 	let tmp = {firstName:fName, lastName:lName, userId:parseInt(localStorage.getItem("userId"))};
