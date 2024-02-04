@@ -1,14 +1,49 @@
 const idlist = []
 var rowID = -1;
 // Loads the first 10 contacts (if they exist) from the database
-function fetchFirstLoadedContacts(search) {
+function fetchFirstLoadedContacts() {
+    let tmp = {userId: parseInt(localStorage.getItem("userId")), search: ""};
 
-    if (parseInt(search) == 1) {
-        let tmp = {userId: parseInt(localStorage.getItem("userId")), search: document.getElementById('searchBar').value };
-    }
-    else {
-        let tmp = {userId: parseInt(localStorage.getItem("userId")), search: ""};
-    }
+
+	let jsonPayload = JSON.stringify( tmp );
+
+	let url = urlBase + '/SearchContacts.' + extension;
+	let xhr = new XMLHttpRequest();
+
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+	try
+	{
+		xhr.onreadystatechange = function()
+	 	{
+			if (this.readyState == 4 && this.status == 200) {
+				let jsonObject = JSON.parse(xhr.responseText);
+                if (jsonObject.error) {
+                    console.log(jsonObject.error);
+                    return;
+                }
+                
+				for (let i = 0; i < jsonObject.results.length; i++) {
+                    console.log("id: " + jsonObject.results[i].ID);
+					createContact(jsonObject.results[i].FirstName, jsonObject.results[i].LastName, 
+                        jsonObject.results[i].Phone, jsonObject.results[i].Email, jsonObject.results[i].ID);
+				}
+			}
+		}
+		xhr.send(jsonPayload);
+	}
+	catch (err) {
+
+	}
+
+}
+
+function searchContacts() {
+    let search = document.getElementById("searchBar").value;
+
+    let tmp = {userId: parseInt(localStorage.getItem("userId")), search: search};
+
 
 	let jsonPayload = JSON.stringify( tmp );
 
@@ -42,6 +77,7 @@ function fetchFirstLoadedContacts(search) {
 
 	}
 }
+
 function editContactHandler() {
     // Find table row to be modified using RegEx
     let ID = event.srcElement.id;
@@ -126,7 +162,7 @@ function addContactHandler() {
     // Give server time to process add contact before loading again
 
     setTimeout(() => {
-        fetchFirstLoadedContacts(0);
+        fetchFirstLoadedContacts();
       }, 100);
     
     
