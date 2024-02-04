@@ -1,8 +1,8 @@
 const idlist = []
 var rowID = -1;
 // Loads the first 10 contacts (if they exist) from the database
-function fetchFirstLoadedContacts() {
-    let tmp = {userId: parseInt(localStorage.getItem("userId")), search: "" };
+function fetchFirstLoadedContacts(searchName) {
+    let tmp = {userId: parseInt(localStorage.getItem("userId")), search: searchName };
 	
 	let jsonPayload = JSON.stringify( tmp );
 
@@ -120,7 +120,7 @@ function addContactHandler() {
     // Give server time to process add contact before loading again
 
     setTimeout(() => {
-        fetchFirstLoadedContacts();
+        fetchFirstLoadedContacts("");
       }, 100);
     
     
