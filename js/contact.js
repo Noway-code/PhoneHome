@@ -40,11 +40,11 @@ function fetchFirstLoadedContacts() {
 }
 
 function searchContacts() {
+    console.log("trigger");
     let search = document.getElementById("searchBar").value;
 
     let tmp = {userId: parseInt(localStorage.getItem("userId")), search: search};
 
-    console.log("trigger");
     console.log(search);
 
 	let jsonPayload = JSON.stringify( tmp );
