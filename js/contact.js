@@ -3,7 +3,7 @@ var rowID = -1;
 // Loads the first 10 contacts (if they exist) from the database
 function fetchFirstLoadedContacts(search) {
 
-    if (search == 1) {
+    if (parseInt(search) == 1) {
         let tmp = {userId: parseInt(localStorage.getItem("userId")), search: document.getElementById('searchBar').value };
     }
     else {
