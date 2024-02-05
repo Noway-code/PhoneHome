@@ -1,9 +1,7 @@
 body, html {
-    background-image: url('images/bg-main.png');
+    background-image: url('/images/bg-main.png');
     background-attachment: fixed;
     background-position: center;
-    background-repeat: repeat;
-    background-attachment: fixed;
 }
 
 .btn.btn-dark{
