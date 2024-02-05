@@ -20,11 +20,11 @@ body {
 
 #searchBarContainer {
 	padding-bottom: 10px;
+	text-align: center;
 }
 
 #searchBar {
 	display: block;
-	text-align: center;
 	margin: auto;
 	width: 200px;
 }
