@@ -1,8 +1,12 @@
-body {
+body, html {
     background-image: url('/images/bg-main.png');
     background-attachment: fixed;
     background-position: center;
+}
 
+.btn.btn-dark{
+  margin: 5px 5px 5px 5px;
+  border-radius: 20px;
 }
 
 #title {
@@ -11,16 +15,12 @@ body {
 	color: white;
     font-family: 'Ubuntu', sans-serif;
 	text-align: center;
+    padding-bottom: 5px;
 }
 
-#logOutContainer {
-	position: absolute;
-	right: 0;
-}
 
 #searchBarContainer {
-	padding-bottom: 10px;
-	text-align: center;
+	padding-bottom: 20px;
 }
 
 #searchBar {
@@ -35,8 +35,16 @@ body {
 	width: 90%;
 	background-color: rgba(178, 178, 178, 0.5);
 	margin: auto;
-	height: 80vh;
+	height: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
     backdrop-filter: blur(2px);
+    border-radius: 20px;
+}
+
+#contactsContainer table {
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .inputInfo {
@@ -70,8 +78,16 @@ td {
 
 
 #headerRow {
+
 }
 
+th {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 20px;
+    font-family: 'Ubuntu', sans-serif;
+
+}
 
 /*#editButton, #deleteButton {
 	display: none;

@@ -277,13 +277,6 @@ select{
 }
 
 
-
-@font-face {
-    font-family: QuirkyRobot;
-    src: url(/fonts/QuirkyRobot.ttf);
-
-}
-
 input[type="text"]::placeholder, input[type="password"]::placeholder {
     font-size: 32px;
 }
