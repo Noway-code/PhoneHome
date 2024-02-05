@@ -20,16 +20,29 @@ body, html {
 
 
 #searchBarContainer {
-	padding-bottom: 20px;
+    text-align: center;
 }
 
 #searchBar {
 	text-align: center;
 	display: block;
-	margin: auto;
+    border-radius: 5px;
 	width: 200px;
 }
 
+#searchBarContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+
+}
+
+#searchButton {
+    margin-left: 10px;
+    border-radius: 5px;
+    height: fit-content;
+}
 
 #contactsContainer {
 	width: 90%;
