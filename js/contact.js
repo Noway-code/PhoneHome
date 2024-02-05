@@ -40,12 +40,16 @@ function fetchFirstLoadedContacts() {
 }
 
 function searchContacts() {
-    console.log("trigger");
+    // Clear table
+    for (let i = 0; i <= rowID; i++) {
+        $("#" + i).remove();
+    }
+
+    // Take search
     let search = document.getElementById("searchBar").value;
 
     let tmp = {userId: parseInt(localStorage.getItem("userId")), search: search};
 
-    console.log(search);
 
 	let jsonPayload = JSON.stringify( tmp );
 
