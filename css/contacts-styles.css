@@ -24,10 +24,10 @@ body, html {
 }
 
 #searchBar {
-	display: block;
 	text-align: center;
-    width: 200px;
-    margin: auto;
+	display: block;
+	margin: auto;
+	width: 200px;
 }
 
 

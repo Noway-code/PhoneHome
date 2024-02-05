@@ -1,15 +1,12 @@
 const urlBase = 'http://cop4331-spring.xyz/LAMPAPI';
 const extension = 'php';
 
-//var userId = 0;
-//localStorage.setItem("userId", 0);
 let firstName = "";
 let lastName = "";
 
 
 function doLogin()
 {
-	//userId = 0;
 	localStorage.setItem("userId", 0);
 	firstName = "";
 	lastName = "";
@@ -68,15 +65,15 @@ function doLogin()
 }
 
 function doRegister() {
-	userId = 0;
-	firstName = document.getElementById("firstName").value;
-	lastName = document.getElementById("lastName").value;
-
+	let firstName = document.getElementById("firstName").value;
+	let lastName = document.getElementById("lastName").value;
 	let login = document.getElementById("registerName").value;
 	let password = document.getElementById("registerPassword").value;
 	let passwordConfirm = document.getElementById("registerConfirmPassword").value;
 
 	document.getElementById("registerResult").innerHTML = "";
+
+
 
 	if (password !== passwordConfirm) {
 		document.getElementById("registerResult").innerHTML = "Passwords do not match";
@@ -101,47 +98,50 @@ function doRegister() {
 		}
 	}
 
-	let tmp = {firstName:firstName,lastName:lastName,login:login,password:password};
-
-	let jsonPayload = JSON.stringify( tmp );
+	let tmp = { firstName: firstName, lastName: lastName, login: login, password: password };
+	let jsonPayload = JSON.stringify(tmp);
 
 	let url = urlBase + '/Registration.' + extension;
 	let xhr = new XMLHttpRequest();
 
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-	try {
-		xhr.onreadystatechange = function() {
-			if (this.readyState == 4 && this.status == 200) {
-				let jsonObject = JSON.parse( xhr.responseText );
-				userId = jsonObject.id;
 
-				if( userId < 1 ) {
+	try {
+		xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                if (this.status == 200) {
+				let jsonObject = JSON.parse(xhr.responseText);
+                    let userId = jsonObject.id;
+
+				if (userId < 1) {
 					document.getElementById("registerResult").innerHTML = "Registration failed";
 					return;
 				}
 
-				firstName = tmp.firstName;
-				lastName = tmp.lastName;
-				login = jsonObject.username;
-				password = jsonObject.password;
+				// Store the userId in local storage
+				localStorage.setItem("userId", userId);
+                    localStorage.setItem("firstName", tmp.firstName);
+                    localStorage.setItem("lastName", tmp.lastName);
 				saveCookie();
 
 				window.location.href = "contacts-index.html";
+                } else {
+                    document.getElementById("registerResult").innerHTML = "Server error: " + xhr.statusText;
+                }
 			}
 		};
 		xhr.send(jsonPayload);
-	}
-	catch(err) {
+	} catch (err) {
 		document.getElementById("registerResult").innerHTML = err.message;
 	}
 }
 
-function saveCookie()
-{
+function saveCookie() {
 	let minutes = 20;
 	let date = new Date();
 	date.setTime(date.getTime()+(minutes*60*1000));
+	let userId = localStorage.getItem("userId"); // Retrieve userId from local storage
 	document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
 }
 
@@ -236,39 +236,39 @@ function addContact(fName, lName, pNumber, email)
 
 }
 
-function searchContacts ()
-{
-	let tmp = {userId: parseInt(localStorage.getItem("userId")), search: "" };
+// function searchContacts ()
+// {
+// 	let tmp = {userId: parseInt(localStorage.getItem("userId")), search: "" };
 
-	let jsonPayload = JSON.stringify( tmp );
+// 	let jsonPayload = JSON.stringify( tmp );
 
-	let url = urlBase + '/SearchContacts.' + extension;
-	let xhr = new XMLHttpRequest();
+// 	let url = urlBase + '/SearchContacts.' + extension;
+// 	let xhr = new XMLHttpRequest();
 
-	xhr.open("POST", url, true);
-	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+// 	xhr.open("POST", url, true);
+// 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
-	try
-	{
-		xhr.onreadystatechange = function()
-	 	{
-			if (this.readyState == 4 && this.status == 200) {
-				let jsonObject = JSON.parse(xhr.responseText);
-                if (jsonObject.error) {
-                    console.log(jsonObject.error);
-                    return;
-                }
-				for (let i = 0; i < jsonObject.results.length; i++) {
+// 	try
+// 	{
+// 		xhr.onreadystatechange = function()
+// 	 	{
+// 			if (this.readyState == 4 && this.status == 200) {
+// 				let jsonObject = JSON.parse(xhr.responseText);
+//                 if (jsonObject.error) {
+//                     console.log(jsonObject.error);
+//                     return;
+//                 }
+// 				for (let i = 0; i < jsonObject.results.length; i++) {
 
-				}
-			}
-		}
-		xhr.send(jsonPayload);
-	}
-	catch (err) {
+// 				}
+// 			}
+// 		}
+// 		xhr.send(jsonPayload);
+// 	}
+// 	catch (err) {
 
-	}
-}
+// 	}
+// }
 
 function deleteContact(fName, lName) {
 	let tmp = {firstName:fName, lastName:lName, userId:parseInt(localStorage.getItem("userId"))};
