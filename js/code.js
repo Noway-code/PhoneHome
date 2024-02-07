@@ -33,10 +33,8 @@ function doLogin()
 			if (this.readyState == 4 && this.status == 200)
 			{
 				let jsonObject = JSON.parse( xhr.responseText );
-				//userId = jsonObject.id;
+
 				localStorage.setItem("userId", jsonObject.id);
-				//console.log("first log:" + localStorage.getItem("userId"));
-				//alert(userId);
 
 
 				if(parseInt(localStorage.getItem("userId")) < 1)
@@ -121,8 +119,9 @@ function doRegister() {
 
 				// Store the userId in local storage
 				localStorage.setItem("userId", userId);
-                    localStorage.setItem("firstName", tmp.firstName);
-                    localStorage.setItem("lastName", tmp.lastName);
+                localStorage.setItem("firstName", tmp.firstName);
+                localStorage.setItem("lastName", tmp.lastName);
+				
 				saveCookie();
 
 				window.location.href = "contacts-index.html";
@@ -179,6 +178,7 @@ function readCookie()
 	//alert("cookie read, userid is: " + userId);
 }
 
+// Logs the user out and resets session information
 function doLogout()
 {
 	userId = 0;
@@ -189,24 +189,11 @@ function doLogout()
 	window.location.href = "index.html";
 }
 
-// This will be test, just changing the endpoint for now
+// Sends json payload with contact information to be added to database
 function addContact(fName, lName, pNumber, email)
 {
-	// let newContact = document.getElementById("contactText").value;
-	// document.getElementById("contactAddResult").innerHTML = "";
-	//console.log("user id is: " + userId);
-    //let tmp = {color:newContact,userId,userId};
-    // let newContactSplit = newContact.split(" ");
-    // let tmp = {firstName:newContactSplit[0], lastName:newContactSplit[1], phone:newContactSplit[2], email:newContactSplit[3], userId:userId}
-	//let tmp = {firstName:fName, lastName:lName, phone:pNumber, email:email, userId:userId};
 	let tmp = {firstName:fName, lastName:lName, phone:pNumber, email:email, userId:parseInt(localStorage.getItem("userId"))};
 
-	//let newContact = document.getElementById("contactText").value;
-	//document.getElementById("contactAddResult").innerHTML = "";
-
-	//let tmp = {color:newContact,userId,userId};
-	//let newContactSplit = newContact.split(" ");
-	//let tmp = {firstName:newContactSplit[0], lastName:newContactSplit[1], phone:newContactSplit[2], email:newContactSplit[3], userId:userId}
 	let jsonPayload = JSON.stringify( tmp );
 
 
@@ -222,8 +209,6 @@ function addContact(fName, lName, pNumber, email)
 			if (this.readyState == 4 && this.status == 200)
 			{
 				console.log("userid in addContact(): " + parseInt(localStorage.getItem("userId")));
-				//alert("contact added successfully");
-				// document.getElementById("contactAddResult").innerHTML = "Contact has been added";
 			}
 		};
 		xhr.send(jsonPayload);
@@ -231,7 +216,6 @@ function addContact(fName, lName, pNumber, email)
 	catch(err)
 	{
 		alert("error in adding contact");
-		// document.getElementById("contactAddResult").innerHTML = err.message;
 	}
 
 }

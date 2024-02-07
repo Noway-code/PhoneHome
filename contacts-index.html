@@ -53,9 +53,7 @@
 
         <div id="searchBarContainer">
 
-            <input type="text" id="searchBar" placeholder="Search" />
-
-            <button type="button" id="searchButton" class="buttonsUserForm" onclick="searchContacts();">Search</button>
+            <input onkeyup=timedSearchContacts() input type="text" id="searchBar" placeholder="Search" />
 
         </div>
 
@@ -90,8 +88,7 @@
                             Destroy
                         </button>-->
                         <button id="addContactButton" type="button" class="btn btn-dark" onclick="addContactHandler();">
-                            Add Contact
-
+                            Append Entry
                         </button>
                     </td>
                 </tr>
