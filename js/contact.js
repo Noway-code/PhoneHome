@@ -66,12 +66,12 @@ function searchContacts() {
 			if (this.readyState == 4 && this.status == 200) {
 				let jsonObject = JSON.parse(xhr.responseText);
                 if (jsonObject.error) {
-                    console.log(jsonObject.error);
+                    //console.log(jsonObject.error);
                     return;
                 }
                 
 				for (let i = 0; i < jsonObject.results.length; i++) {
-                    console.log("id: " + jsonObject.results[i].ID);
+                    //console.log("id: " + jsonObject.results[i].ID);
 					createContact(jsonObject.results[i].FirstName, jsonObject.results[i].LastName, 
                         jsonObject.results[i].Phone, jsonObject.results[i].Email, jsonObject.results[i].ID);
 				}
