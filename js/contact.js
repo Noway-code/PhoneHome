@@ -44,8 +44,8 @@ function timedSearchContacts() {
     console.log(intervalID);
     clearTimeout(intervalID);
 
-    setTimeout(() => {
-        intervalID = searchContacts();
+    intervalID = setTimeout(() => {
+        searchContacts();
       }, 250);
 }
 
@@ -116,8 +116,8 @@ function doneEditingHandler() {
     let ID = event.srcElement.id;
     let currentRowID = ID.match(/\d+/);
 
-    console.log("rowID in editContact(): " + currentRowID);
-    console.log("value: " + idlist[currentRowID]);
+    //console.log("rowID in editContact(): " + currentRowID);
+    //console.log("value: " + idlist[currentRowID]);
 
     // Grab and store each field in a variable from current row
     let firstName = $("#firstName" + currentRowID).val();
