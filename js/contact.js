@@ -41,6 +41,7 @@ function fetchFirstLoadedContacts() {
 
 let intervalID = 0;
 function timedSearchContacts() {
+    console.log(intervalID);
     clearTimeout(intervalID);
 
     setTimeout(() => {
