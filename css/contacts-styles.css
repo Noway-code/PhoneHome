@@ -71,6 +71,7 @@ body, html {
 .inputInfo {
 	text-align: center;
     width: 90%;
+    border-radius: 5px;
 }
 
 table {
