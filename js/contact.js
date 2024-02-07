@@ -39,11 +39,12 @@ function fetchFirstLoadedContacts() {
 
 }
 
+let intervalID = 0;
 function timedSearchContacts() {
-    clearTimeout();
+    clearTimeout(intervalID);
 
     setTimeout(() => {
-        searchContacts();
+        intervalID = searchContacts();
       }, 250);
 }
 
