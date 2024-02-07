@@ -41,7 +41,7 @@ function fetchFirstLoadedContacts() {
 
 let intervalID = 0;
 function timedSearchContacts() {
-    console.log(intervalID);
+    //console.log(intervalID);
     clearTimeout(intervalID);
 
     intervalID = setTimeout(() => {
@@ -257,7 +257,7 @@ function createContact(fName, lName, pNumber, email, ID) {
     $("#editButton" + rowID).show();
     $("#deleteButton" + rowID).show();
     $("#doneButton" + rowID).hide();
-    console.log(rowID + " " + ID);
+    //console.log(rowID + " " + ID);
     lockInput(rowID);
     idlist[rowID] = ID;
 }
