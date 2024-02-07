@@ -39,6 +39,14 @@ function fetchFirstLoadedContacts() {
 
 }
 
+function timedSearchContacts() {
+    clearTimeout();
+
+    setTimeout(() => {
+        searchContacts();
+      }, 250);
+}
+
 function searchContacts() {
     // Clear table
     for (let i = 0; i <= rowID; i++) {
