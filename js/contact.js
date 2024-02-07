@@ -165,6 +165,11 @@ function addContactHandler() {
     let phoneNumber = document.getElementById("number").value;
     let email = document.getElementById("email").value;
 
+    document.getElementById("firstName").value = "";
+    document.getElementById("lastName").value = "";
+    document.getElementById("number").value = "";
+    document.getElementById("email").value = "";
+
     
     // Function call to addContact with proper values
     //alert("Contact made with " + firstName + " " + lastName + " " + phoneNumber + " " + email);
