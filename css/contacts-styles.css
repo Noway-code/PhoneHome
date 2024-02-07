@@ -10,17 +10,24 @@ body, html {
 }
 
 #title {
-	display: block;
-	font-size: 90px;
-	color: white;
+    display: block;
+    font-size: 90px;
+    color: white;
+    -webkit-text-stroke: 2px black; /* Adjust stroke width and color as needed */
     font-family: 'Ubuntu', sans-serif;
-	text-align: center;
+    text-align: center;
     padding-bottom: 5px;
+    position: relative;
+    z-index: 2;
 }
+
 
 
 #searchBarContainer {
     text-align: center;
+    display: block;
+    position: relative;
+    z-index: 1;
 }
 
 #searchBar {
@@ -60,8 +67,11 @@ body, html {
     overflow: hidden;
 }
 
+
+
 .inputInfo {
-/*	text-align: center;*/
+	text-align: center;
+    width: 90%;
 }
 
 table {
@@ -153,6 +163,12 @@ input {
     height: 400px;
     opacity: 85%;
     animation: spin 20s linear infinite;
+    z-index: 0;
+}
+
+#addContactButton {
+    margin: 10px 0 10px 0;
+    border-radius: 20px;
 }
 
 @keyframes spin {
@@ -170,4 +186,40 @@ input {
     to { opacity: 1.0; }
 }
 
+#contactsContainer, #contactsContainer table, #addContactButton {
+    transition: width 0.5s ease-in-out;
+}
+
+#title, table td, table th, .btn {
+    transition: font-size 0.5s ease-in-out;
+}
+
+@media screen and (max-width: 1250px) {
+    #title {
+        font-size: 70px;
+    }
+
+    table td, table th, .btn {
+        font-size: 14px; /* Adjust as needed */
+    }
+    #contactsContainer, #contactsContainer table {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    #addContactButton {
+        margin-right: 20px;
+        font-size: 10px;
+    }
+}
+
+@media screen and (min-width: 1251px) {
+
+
+    table td, table th, .btn {
+        font-size: 16px; /* Adjust as needed */
+    }
+}
 
