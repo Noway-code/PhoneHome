@@ -19,7 +19,6 @@
         <script type="text/javascript">
             document.addEventListener('DOMContentLoaded', function()
             {
-                //readCookie();
                 fetchFirstLoadedContacts()
             }, false);
             </script>
@@ -43,7 +42,6 @@
         </div>
 
         <div id="logOutContainer" style="text-align: right;">
-                <!-- Maybe could use "Terminate Connection" as message instead? -->
             <button type="button" class="btn btn-dark btn-lg" onclick="doLogout()();">
                 Protocol: Log Out
             </button>
@@ -80,13 +78,6 @@
                         <input type="email" class="inputInfo" id="email" placeholder="Email" required>
                     </td>
                     <td>
-
-                        <!--<button id="editButton" type="button" class="btn btn-dark" onclick="editContact();">
-                            Modify
-                        </button>
-                        <button id="deleteButton" type="button" class="btn btn-dark" onclick="deleteContactHandler(' + i + ');">
-                            Destroy
-                        </button>-->
                         <button id="addContactButton" type="button" class="btn btn-dark" onclick="addContactHandler();">
                             Append Entry
                         </button>

@@ -13,12 +13,10 @@ function doLogin()
 
 	let login = document.getElementById("loginName").value;
 	let password = document.getElementById("loginPassword").value;
-//	var hash = md5( password );
 
 	document.getElementById("loginResult").innerHTML = "";
 
 	let tmp = {login:login,password:password};
-//	var tmp = {login:login,password:hash};
 	let jsonPayload = JSON.stringify( tmp );
 
 	let url = urlBase + '/Login.' + extension;
@@ -48,9 +46,6 @@ function doLogin()
 
 
 				window.location.href = "contacts-index.html";
-
-				//console.log("second log:" + localStorage.getItem("userId"));
-
 			}
 		};
 		xhr.send(jsonPayload);
@@ -140,7 +135,7 @@ function saveCookie() {
 	let minutes = 20;
 	let date = new Date();
 	date.setTime(date.getTime()+(minutes*60*1000));
-	let userId = localStorage.getItem("userId"); // Retrieve userId from local storage
+	let userId = localStorage.getItem("userId");
 	document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
 }
 
@@ -175,7 +170,6 @@ function readCookie()
 	{
 		document.getElementById("userName").innerHTML = "Logged in as " + firstName + " " + lastName;
 	}
-	//alert("cookie read, userid is: " + userId);
 }
 
 // Logs the user out and resets session information
@@ -220,39 +214,6 @@ function addContact(fName, lName, pNumber, email)
 
 }
 
-// function searchContacts ()
-// {
-// 	let tmp = {userId: parseInt(localStorage.getItem("userId")), search: "" };
-
-// 	let jsonPayload = JSON.stringify( tmp );
-
-// 	let url = urlBase + '/SearchContacts.' + extension;
-// 	let xhr = new XMLHttpRequest();
-
-// 	xhr.open("POST", url, true);
-// 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-
-// 	try
-// 	{
-// 		xhr.onreadystatechange = function()
-// 	 	{
-// 			if (this.readyState == 4 && this.status == 200) {
-// 				let jsonObject = JSON.parse(xhr.responseText);
-//                 if (jsonObject.error) {
-//                     console.log(jsonObject.error);
-//                     return;
-//                 }
-// 				for (let i = 0; i < jsonObject.results.length; i++) {
-
-// 				}
-// 			}
-// 		}
-// 		xhr.send(jsonPayload);
-// 	}
-// 	catch (err) {
-
-// 	}
-// }
 
 function deleteContact(fName, lName) {
 	let tmp = {firstName:fName, lastName:lName, userId:parseInt(localStorage.getItem("userId"))};
@@ -271,7 +232,7 @@ function deleteContact(fName, lName) {
 		{
 			if (this.readyState == 4 && this.status == 200)
 			{
-				console.log("userid in deleteContact(): " + parseInt(localStorage.getItem("userId")));
+				//console.log("userid in deleteContact(): " + parseInt(localStorage.getItem("userId")));
 				//alert("contact deleted successfully");
 			}
 		};
@@ -300,7 +261,7 @@ function editContact(field, edit, ID) {
 		{
 			if (this.readyState == 4 && this.status == 200)
 			{
-				console.log("ID in editContact(): " + ID);
+				//console.log("ID in editContact(): " + ID);
 				//alert("contact deleted successfully");
 			}
 		};
