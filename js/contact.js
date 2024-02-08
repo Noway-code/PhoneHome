@@ -148,14 +148,48 @@ function deleteContactHandler() {
     //alert("deleted contact");
 }
 
+function displayPopup(message) {
+    var popup = document.getElementById("popupMessage");
+    popup.textContent = message;
+    popup.style.display = "block";
+
+    setTimeout(function() {
+        popup.style.display = "none";
+    }, 3000); // Hide the popup after 3 seconds
+}
+
+
 function addContactHandler() {
+    var phoneNumberPattern = /^\d{10}$/;
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
     // Grab and store each field in a variable from current row
     let firstName = document.getElementById("firstName").value;
     let lastName = document.getElementById("lastName").value;
     let phoneNumber = document.getElementById("number").value;
     let email = document.getElementById("email").value;
 
-    
+    if (firstName === "")
+    {
+        displayPopup("Please enter a first name");
+    } 
+    else if (lastName === "") {
+        displayPopup("Please enter a last name");
+    } 
+    else if (phoneNumber === "") {
+        displayPopup("Please enter a phone number");
+    } 
+    else if (email === "") {
+        displayPopup("Please enter an email");
+    }
+    else if (!phonePattern.test(phoneNumber)) {
+        displayPopup("Invalid phone number");
+    }
+    else if (!emailPattern.test(email)) {
+        displayPopup("Invalid email");
+    }
+
+
     // Function call to addContact with proper values
     //alert("Contact made with " + firstName + " " + lastName + " " + phoneNumber + " " + email);
     addContact(firstName, lastName, phoneNumber, email);
