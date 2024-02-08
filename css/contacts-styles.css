@@ -52,21 +52,19 @@ body, html {
 
 #contactsContainer {
 	width: 90%;
-	background-color: rgba(178, 178, 178, 0.5);
 	margin: auto;
 	height: auto;
     padding-top: 20px;
     padding-bottom: 20px;
     backdrop-filter: blur(2px);
     border-radius: 20px;
+    background: rgba(0, 0, 0, 0.3) radial-gradient(circle, rgba(250, 249, 249, 0.3) 0%, rgb(1, 33, 1) 100%);
 }
 
 #contactsContainer table {
     border-radius: 10px;
     overflow: hidden;
 }
-
-
 
 .inputInfo {
 	text-align: center;
