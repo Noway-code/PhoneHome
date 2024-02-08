@@ -170,7 +170,7 @@ function displayPopup(message) {
 
 
 function addContactHandler() {
-    var phoneNumberPattern = /^\d{10}$/;
+    var phonePattern = /^\d{10}$/;
     var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     
     // Grab and store each field in a variable from current row
