@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>COP 4331 LAMP Stack Demo</title>
+    <title>Phone Home</title>
+    <link rel = "icon" href = "images/moon.png" type = "image/jpg">
     <script type="text/javascript" src="js/md5.js"></script>
     <script type="text/javascript" src="js/code.js"></script>
     <script src="js/stars.js"></script>
@@ -49,8 +50,8 @@
 <div class="userForm" id="loginDiv">
     <h1 class="inner-title">Welcome Traveller</h1>
     <span class="results" id="loginResult"></span>
-    <input type="text" id="loginName" placeholder="Username" /><br />
-    <input type="password" id="loginPassword" placeholder="Password"/><br />
+    <label for="loginName"></label><input type="text" id="loginName" placeholder="Username" /><br />
+    <label for="loginPassword"></label><input type="password" id="loginPassword" placeholder="Password"/><br />
     <div class="buttonContainer">
         <button type="button" id="loginButton" class="buttonsUserForm" onclick="doLogin();">Login</button>
         <button type="button" id="showRegisterButton" class="btn btn-link showForm" onclick="showRegister();">Click here to register</button>
@@ -60,12 +61,12 @@
     <span class="inner-title">Join The Universe</span>
     <span class="results" id="registerResult"></span>
     <div class="nameInput">
-        <input type="text" id="firstName" placeholder="First Name" />
-        <input type="text" id="lastName" placeholder="Last Name" />
+        <label for="firstName"></label><input type="text" id="firstName" placeholder="First Name" />
+        <label for="lastName"></label><input type="text" id="lastName" placeholder="Last Name" />
     </div>
-    <input type="text" id="registerName" placeholder="Username" /><br />
-    <input type="password" id="registerPassword" placeholder="Password"/><br />
-    <input type="password" id="registerConfirmPassword" placeholder="Confirm Password"/><br />
+    <label for="registerName"></label><input type="text" id="registerName" placeholder="Username" /><br />
+    <label for="registerPassword"></label><input type="password" id="registerPassword" placeholder="Password"/><br />
+    <label for="registerConfirmPassword"></label><input type="password" id="registerConfirmPassword" placeholder="Confirm Password"/><br />
     <div class="buttonContainer">
         <button type="button" id="registerButton" class="buttonsUserForm" onclick="doRegister();">Register</button>
         <button type="button" class="btn btn-link showForm" onclick="showLogin();" >Click here to login</button>

@@ -25,7 +25,7 @@ function fetchFirstLoadedContacts() {
                 }
                 
 				for (let i = 0; i < jsonObject.results.length; i++) {
-                    console.log("id: " + jsonObject.results[i].ID);
+                    //console.log("id: " + jsonObject.results[i].ID);
 					createContact(jsonObject.results[i].FirstName, jsonObject.results[i].LastName, 
                         jsonObject.results[i].Phone, jsonObject.results[i].Email, jsonObject.results[i].ID);
 				}
@@ -37,6 +37,16 @@ function fetchFirstLoadedContacts() {
 
 	}
 
+}
+
+let intervalID = 0;
+function timedSearchContacts() {
+    //console.log(intervalID);
+    clearTimeout(intervalID);
+
+    intervalID = setTimeout(() => {
+        searchContacts();
+      }, 250);
 }
 
 function searchContacts() {
@@ -66,12 +76,12 @@ function searchContacts() {
 			if (this.readyState == 4 && this.status == 200) {
 				let jsonObject = JSON.parse(xhr.responseText);
                 if (jsonObject.error) {
-                    console.log(jsonObject.error);
+                    //console.log(jsonObject.error);
                     return;
                 }
                 
 				for (let i = 0; i < jsonObject.results.length; i++) {
-                    console.log("id: " + jsonObject.results[i].ID);
+                    //console.log("id: " + jsonObject.results[i].ID);
 					createContact(jsonObject.results[i].FirstName, jsonObject.results[i].LastName, 
                         jsonObject.results[i].Phone, jsonObject.results[i].Email, jsonObject.results[i].ID);
 				}
@@ -106,8 +116,8 @@ function doneEditingHandler() {
     let ID = event.srcElement.id;
     let currentRowID = ID.match(/\d+/);
 
-    console.log("rowID in editContact(): " + currentRowID);
-    console.log("value: " + idlist[currentRowID]);
+    //console.log("rowID in editContact(): " + currentRowID);
+    //console.log("value: " + idlist[currentRowID]);
 
     // Grab and store each field in a variable from current row
     let firstName = $("#firstName" + currentRowID).val();
@@ -172,24 +182,37 @@ function addContactHandler() {
     if (firstName === "")
     {
         displayPopup("Please enter a first name");
+        return;
     } 
     else if (lastName === "") {
         displayPopup("Please enter a last name");
+        return;
     } 
     else if (phoneNumber === "") {
         displayPopup("Please enter a phone number");
+        return;
     } 
     else if (email === "") {
         displayPopup("Please enter an email");
+        return;
     }
     else if (!phonePattern.test(phoneNumber)) {
         displayPopup("Invalid phone number");
+        return;
     }
     else if (!emailPattern.test(email)) {
         displayPopup("Invalid email");
+        return;
     }
 
 
+
+    document.getElementById("firstName").value = "";
+    document.getElementById("lastName").value = "";
+    document.getElementById("number").value = "";
+    document.getElementById("email").value = "";
+
+    
     // Function call to addContact with proper values
     //alert("Contact made with " + firstName + " " + lastName + " " + phoneNumber + " " + email);
     addContact(firstName, lastName, phoneNumber, email);
@@ -281,7 +304,7 @@ function createContact(fName, lName, pNumber, email, ID) {
     $("#editButton" + rowID).show();
     $("#deleteButton" + rowID).show();
     $("#doneButton" + rowID).hide();
-    console.log(rowID + " " + ID);
+    //console.log(rowID + " " + ID);
     lockInput(rowID);
     idlist[rowID] = ID;
 }

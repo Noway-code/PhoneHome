@@ -5,6 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>Intergalactic Connections</title>
+        <link rel = "icon" href = "images/moon.png" type = "image/jpg">
         <script type="text/javascript" src="js/md5.js"></script>
         <script type="text/javascript" src="js/contact.js"></script>
         <script type="text/javascript" src="js/code.js"></script>
@@ -52,14 +53,11 @@
 
         <div id="searchBarContainer">
 
-            <input type="text" id="searchBar" placeholder="Search" />
-
-            <button type="button" id="searchButton" class="buttonsUserForm" onclick="searchContacts();">Search</button>
+            <input onkeyup=timedSearchContacts() input type="text" id="searchBar" placeholder="Search" />
 
         </div>
 
         <div id="contactsContainer">
-
             <table>
                 <tr id="headerRow" class="bg-dark">
                     <th>Primary Identifier</th>
