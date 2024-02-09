@@ -267,19 +267,19 @@ function unlockInput(currentRowID) {
 
     $("#firstName" + currentRowID).css({
         'border': '1px solid grey',
-        'background': 'white'
+        'background': 'black'
     });
     $("#lastName" + currentRowID).css({
         'border': '1px solid grey',
-        'background': 'white'
+        'background': 'black'
     });
     $("#number" + currentRowID).css({
         'border': '1px solid grey',
-        'background': 'white'
+        'background': 'black'
     });
     $("#email" + currentRowID).css({
         'border': '1px solid grey',
-        'background': 'white'
+        'background': 'black'
     });
 }
 function createEmptyContactRow() {
